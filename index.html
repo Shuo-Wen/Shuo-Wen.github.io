@@ -16,6 +16,7 @@
       --border: #dde9ec;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--light);
@@ -345,9 +346,48 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ─── STICKY NAV ─────────────────────────────── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .sticky-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 900px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sticky-nav ul::-webkit-scrollbar { display: none; }
+    .sticky-nav ul li a {
+      display: block;
+      padding: 14px 18px;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--navy);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .sticky-nav ul li a:hover,
+    .sticky-nav ul li a.active {
+      color: var(--teal);
+      border-bottom-color: var(--accent);
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 1.55rem; }
       .tl-header { flex-direction: column; }
+      .sticky-nav ul li a { padding: 12px 12px; font-size: .72rem; }
     }
   </style>
 </head>
@@ -398,10 +438,22 @@
   </div>
 </header>
 
+<nav class="sticky-nav" aria-label="Page sections">
+  <ul>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#awards">Honor &amp; Awards</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#international">International</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+
 <main>
 
   <!-- ─── SUMMARY ──────────────────────────────────── -->
-  <section>
+  <section id="summary">
     <h2 class="section-title">Professional Summary</h2>
     <div class="summary-card">
       <p>Physical design and APR engineer with hands-on experience executing Innovus place-and-route flows across production designs from Apple and Qualcomm on advanced technology nodes. Deep expertise in placement, clock tree synthesis, routing, timing closure, and DRV debugging, combined with strong analytical skills developed through systematic QoR evaluation and root-cause analysis.</p>
@@ -410,7 +462,7 @@
   </section>
 
   <!-- ─── SKILLS ────────────────────────────────────── -->
-  <section>
+  <section id="skills">
     <h2 class="section-title">Skills</h2>
     <div class="skill-groups">
       <div class="skill-group">
@@ -477,7 +529,7 @@
   </section>
 
   <!-- ─── EXPERIENCE ────────────────────────────────── -->
-  <section>
+  <section id="experience">
     <h2 class="section-title">Professional Experience</h2>
     <div class="timeline">
 
@@ -553,7 +605,7 @@
   </section>
 
   <!-- ─── EDUCATION ─────────────────────────────────── -->
-  <section>
+  <section id="education">
     <h2 class="section-title">Education</h2>
     <div class="timeline">
 
@@ -631,7 +683,7 @@
   </section>
 
   <!-- ─── AWARDS ────────────────────────────────────── -->
-  <section>
+  <section id="awards">
     <h2 class="section-title">Awards &amp; Recognition</h2>
     <div class="awards-list">
 
@@ -745,7 +797,7 @@
   </section>
 
   <!-- ─── PUBLICATIONS ────────────────────────────────── -->
-  <section>
+  <section id="publications">
     <div class="pub-header">
       <h2 class="section-title" style="border-bottom:none;margin-bottom:0;">Publications</h2>
       <a class="scholar-btn"
@@ -801,7 +853,7 @@
   </section>
 
   <!-- ─── INTERNATIONAL ──────────────────────────────── -->
-  <section>
+  <section id="international">
     <h2 class="section-title">International Experience</h2>
     <div class="intl-pills">
       <div class="intl-pill"><span class="flag">🇧🇪</span><span>Research internship at IMEC, Belgium — worked with European engineers &amp; scientists</span></div>
@@ -820,6 +872,33 @@
     <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">LinkedIn</a>
   </p>
 </footer>
+<script>
+  // Smooth scroll offset for sticky nav height
+  document.querySelectorAll('.sticky-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const navH = document.querySelector('.sticky-nav').offsetHeight;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  // Highlight active tab on scroll
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = document.querySelectorAll('.sticky-nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.sticky-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
 
 </body>
 </html>
