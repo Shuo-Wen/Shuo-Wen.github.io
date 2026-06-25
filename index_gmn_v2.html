@@ -12,13 +12,6 @@
       --apple-blue: #0066cc;
       --apple-card: #ffffff;
       --apple-accent: #22c5b0;
-      --navy: #1d1d1f;
-      --teal: #0066cc;
-      --accent: #22c5b0;
-      --light: #f5f5f7;
-      --muted: #86868b;
-      --white: #ffffff;
-      --card: #ffffff;
       --border: #e8e8ed;
     }
 
@@ -310,12 +303,42 @@
       top: 3px;
     }
 
-    /* ─── AWARDS ──────────────────────────────────── */
-    .awards-list { display: flex; flex-direction: column; gap: 18px; }
-    .award-card { padding: 24px 26px; font-size: .93rem; }
-    .award-card .award-title { font-weight: 800; letter-spacing: -0.01em; }
-    .award-card .award-meta { color: var(--apple-sub); font-size: .84rem; margin-top: 4px; }
-    
+    /* ─── MODERN DETAILS & AWARDS STYLE ───────────── */
+    .modern-details {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    .modern-summary-trigger {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--apple-blue);
+      cursor: pointer;
+      list-style: none; /* 隱藏 Safari/Chrome 預設箭頭 */
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .modern-summary-trigger::-webkit-details-marker {
+      display: none; /* 隱藏舊版 Webkit 箭頭 */
+    }
+    .modern-summary-trigger::before {
+      content: '⊕';
+      font-size: 1.05rem;
+      transition: transform 0.2s ease;
+    }
+    .modern-details[open] .modern-summary-trigger::before {
+      content: '⊖';
+    }
+    .modern-details-content {
+      animation: fadeInSlide 0.3s ease-out forwards;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── IMAGES & PHOTO WRAPPER ─────────────────── */
     .award-photos {
       display: flex;
       flex-wrap: wrap;
@@ -560,7 +583,7 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#publications">Publications</a></li>
-    <li><a href="#international">International Experience</a></li>
+    <li><a href="#international">International</a></li>
   </ul>
 </nav>
 
@@ -701,7 +724,7 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">TSMC Internship — F6 Manufacturing Information Technology Department</span>
+            <span class="tl-role">TSMC Internship — F6 Manufacturing IT</span>
             <span class="tl-date">Jul 2019 – Aug 2019</span>
           </div>
           <p class="tl-company">Taiwan Semiconductor Manufacturing Company (TSMC) · Tainan, Taiwan</p>
@@ -727,26 +750,46 @@
             <span class="tl-date">Aug 2017 – Jan 2020</span>
           </div>
           <p class="tl-company">National Taiwan University · Taipei, Taiwan</p>
-          <ul>
+          <ul style="margin-bottom: 12px;">
             <li>GPA: 4.23 / 4.30  |  Rank: <strong>8 / 91</strong></li>
             <li>Coursework: Artificial Neural Networks (A+), Big Data Systems (A+)</li>
           </ul>
+
+          <details class="modern-details" style="margin-bottom: 16px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View NTU Transcript</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner">
+                <div class="award-photos" style="margin-bottom: 12px;">
+                  <a href="jpg/NTU_Official_Transcript.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTU_Official_Transcript.jpg" alt="National Taiwan University Official Transcript (Rank 8/91)" style="max-height: 180px; width: auto; object-fit: contain;" />
+                  </a>
+                </div>
+                <a href="pdf/NTU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 4px;">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  Download Official NTU Transcript (PDF)
+                </a>
+              </div>
+            </div>
+          </details>
+
           <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
             <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener">
               <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy" />
             </a>
-            <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
+            <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               My thesis was presented on 9th Oct 2019 in Bari, Italy. I was invited to serve as the co-chair of my session: <em>Image Processing / Pattern Recognition (II)</em>.
             </p>
           </div>
+
           <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
             <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener">
               <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019" />
             </a>
-            <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
+            <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               The former president of NTU and IEEE Fellow, Prof. Si-Chen Lee, presenting the student representative award at the 2019 EECS graduation ceremony.
             </p>
           </div>
+
         </div>
       </div>
 
@@ -775,180 +818,203 @@
             <span class="tl-date">Sep 2013 – Jun 2017</span>
           </div>
           <p class="tl-company">National Taiwan Normal University · Taipei, Taiwan</p>
-          <ul>
-            <li>GPA: 4.11 / 4.30  |  Rank: <strong>1 / 59</strong></li>
+          <ul style="margin-bottom: 8px;">
+            <li>GPA: 4.11 / 4.30  |  Rank: <strong>1 / 59</strong> <span style="margin-left: 8px; font-weight: 700; color: #b8860b; background: rgba(184,134,11,0.1); padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; white-space: nowrap;">6x Presidential Award</span></li>
             <li>Awarded 4-year full government scholarship by the Ministry of Education, Taiwan.</li>
           </ul>
+          
+          <details class="modern-details" style="margin-top: 8px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Scholarship & NTNU Transcript</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner">
+                <div class="award-photos" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;">
+                  <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship Certificate" style="max-height: 150px; width: auto; object-fit: contain;" />
+                  </a>
+                  <a href="jpg/NTNU_Official_Transcript_page1.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTNU_Official_Transcript_page1.jpg" alt="NTNU Official Transcript (Page 1)" style="max-height: 150px; width: auto; object-fit: contain;" />
+                  </a>
+                  <a href="jpg/NTNU_Official_Transcript_page2.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTNU_Official_Transcript_page2.jpg" alt="NTNU Official Transcript (Page 2)" style="max-height: 150px; width: auto; object-fit: contain;" />
+                  </a>
+                </div>
+                <a href="pdf/NTNU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 4px;">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  Download Complete NTNU Transcript & Awards (PDF)
+                </a>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
     </div>
   </section>
 
-<section id="awards">
-    <h2 class="section-title">Awards & Recognition</h2>
-    <div class="awards-list">
-
-      <div class="award-card">
-        <p class="award-title">NTU Outstanding Student Award</p>
-        <p class="award-meta">National Taiwan University · 2019  |  Only 13 recipients university-wide</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
-                </a>
-                <a href="avif/NTU_outstanding_youth_with_president.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" />
-                </a>
-                <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">NTU Outstanding Achievement Award — EECS</p>
-        <p class="award-meta">National Taiwan University · 2018  |  Only 1 recipient in the entire EECS college</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">NTU Altruistic Award</p>
-        <p class="award-meta">National Taiwan University  |  Awarded for outstanding contributions to the community</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
-                </a>
-                <a href="jpg/Alutric_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" />
-                </a>
-                <a href="jpg/Alutric_award_cerf.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Alutric_award_cerf.jpg" alt="NTU Altruistic Award — Certificate of Altruistic Award" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">IEEE VTS Best Paper Award</p>
-        <p class="award-meta">International · 2023  |  Presented Nov 2024  |  3rd author</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
-                </a>
-                <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
-        <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper" style="align-items:flex-start;">
-                <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
-                  <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" />
+  <section id="awards">
+      <h2 class="section-title">Awards & Recognition</h2>
+      <div class="awards-list">
+  
+        <div class="award-card">
+          <p class="award-title">NTU Outstanding Student Award</p>
+          <p class="award-meta">National Taiwan University · 2019  |  Only 13 recipients university-wide</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
+                    <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
                   </a>
-                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">1st-round qualifying pass</p>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
-                  <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
-                    <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Finals — 2nd Place certificate" />
+                  <a href="avif/NTU_outstanding_youth_with_president.avif" target="_blank" rel="noopener">
+                    <img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" />
                   </a>
-                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">National Finals — 2nd Place Certificate</p>
+                  <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-        </details>
-        <p style="font-size:.85rem;color:var(--navy);margin-top:12px;line-height:1.6;">
-          Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;text-decoration:none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
-        </p>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">Future Finance & Healthcare Hackathon</p>
-        <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
-                  <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
-                </a>
-                <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
-                </a>
-                <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
-                  <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
-                </a>
+          </details>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">NTU Outstanding Achievement Award — EECS</p>
+          <p class="award-meta">National Taiwan University · 2018  |  Only 1 recipient in the entire EECS college</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
-      </div>
-
-      <div class="award-card">
-        <p class="award-title">Ministry of Education Full Scholarship</p>
-        <p class="award-meta">Taiwan Government · 4-year award for rank 1/59 undergraduate</p>
-        
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Award Photos</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
-                <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" />
-                </a>
+          </details>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">NTU Altruistic Award</p>
+          <p class="award-meta">National Taiwan University  |  Awarded for outstanding contributions to the community</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
+                    <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
+                  </a>
+                  <a href="jpg/Alutric_award.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" />
+                  </a>
+                  <a href="jpg/Alutric_award_cerf.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/Alutric_award_cerf.jpg" alt="NTU Altruistic Award — Certificate of Altruistic Award" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">IEEE VTS Best Paper Award</p>
+          <p class="award-meta">International · 2023  |  Presented Nov 2024  |  3rd author</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
+                  </a>
+                  <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
+          <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos" style="align-items: flex-start; gap: 16px;">
+                  <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                    <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
+                      <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" style="max-height: 140px; width: auto; object-fit: contain;" />
+                    </a>
+                    <p style="font-size: .78rem; color: var(--apple-sub); max-width: 220px;">1st-round qualifying pass</p>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+                    <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
+                      <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Finals — 2nd Place certificate" style="max-height: 140px; width: auto; object-fit: contain;" />
+                    </a>
+                    <p style="font-size: .78rem; color: var(--apple-sub); max-width: 220px;">National Finals — 2nd Place Certificate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+          <p style="font-size: .85rem; color: var(--apple-text); margin-top: 12px; line-height: 1.6;">
+            Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight: 600; text-decoration: none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
+          </p>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">Future Finance & Healthcare Hackathon</p>
+          <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Award Photos</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
+                    <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
+                  </a>
+                  <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
+                  </a>
+                  <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
+                    <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+  
+        <div class="award-card">
+          <p class="award-title">Ministry of Education Full Scholarship</p>
+          <p class="award-meta">Taiwan Government · 4-year award for rank 1/59 undergraduate</p>
+          
+          <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+            <summary class="modern-summary-trigger">View Certificate</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="padding: 14px 16px;">
+                <div class="award-photos">
+                  <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" style="max-height: 160px; width: auto; object-fit: contain; border-radius: 4px;" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+  
       </div>
-
-    </div>
   </section>
 
   <section id="publications">
@@ -982,7 +1048,7 @@
             <div style="margin-top:8px;">
               <p style="font-size:0.85rem;">
                 Referenced in
-                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--teal);font-weight:600;text-decoration:none;">
+                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--apple-blue);font-weight:600;text-decoration:none;">
                   Nature Machine Intelligence article
                 </a>
               </p>
@@ -1043,9 +1109,9 @@
 
 <footer>
   <p>Kevin (Shuo-Wen) Chang  · 
-    <a href="mailto:changshuowen@gmail.com" style="color:var(--teal);text-decoration:none;">changshuowen@gmail.com</a>
+    <a href="mailto:changshuowen@gmail.com" style="color:var(--apple-blue);text-decoration:none;">changshuowen@gmail.com</a>
      · 
-    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--apple-blue);text-decoration:none;">LinkedIn</a>
   </p>
 </footer>
 
