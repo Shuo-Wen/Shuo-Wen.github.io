@@ -4,49 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kevin (Shuo-Wen) Chang — Physical Design & AI CAD Engineer</title>
-  <style>
+    <style>
     :root {
-      --navy:   #0d1b2a;
-      --teal:   #1a6b72;
+      --apple-bg: #f5f5f7;
+      --apple-text: #1d1d1f;
+      --apple-sub: #86868b;
+      --apple-blue: #0066cc;
+      --apple-card: #ffffff;
+      --apple-accent: #22c5b0;
+      --navy: #1d1d1f;
+      --teal: #0066cc;
       --accent: #22c5b0;
-      --light:  #f4f8f9;
-      --muted:  #6b8a91;
-      --white:  #ffffff;
-      --card:   #ffffff;
-      --border: #dde9ec;
+      --light: #f5f5f7;
+      --muted: #86868b;
+      --white: #ffffff;
+      --card: #ffffff;
+      --border: #e8e8ed;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--light);
-      color: var(--navy);
-      line-height: 1.65;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--apple-bg);
+      color: var(--apple-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* ─── HEADER ─────────────────────────────────── */
+    /* ─── APPLE-STYLE HERO ────────────────────────── */
     header {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
-      color: var(--white);
-      padding: 56px 24px 48px;
+      background: radial-gradient(circle at top, #ffffff 0%, #f5f5f7 72%);
+      color: var(--apple-text);
+      padding: 86px 24px 64px;
       text-align: center;
+      border-bottom: 1px solid var(--border);
     }
     .avatar {
-      width: 130px; height: 130px;
+      width: 118px;
+      height: 118px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--accent);
-      margin-bottom: 20px;
+      border: 0;
+      margin: 0 auto 26px;
       display: block;
-      margin-left: auto; margin-right: auto;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
     }
-    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+    header h1 {
+      font-size: clamp(2.45rem, 6vw, 4.3rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+      color: var(--apple-text);
+    }
     header .subtitle {
-      font-size: 1.05rem;
-      color: var(--accent);
-      margin: 6px 0 20px;
+      font-size: clamp(1.08rem, 2vw, 1.38rem);
+      color: var(--apple-sub);
+      margin: 14px 0 30px;
       font-weight: 500;
+      letter-spacing: -0.015em;
     }
+
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -58,341 +77,522 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: var(--white);
+      background: var(--apple-card);
+      border: 1px solid var(--border);
+      color: var(--apple-text);
       text-decoration: none;
-      padding: 7px 16px;
+      padding: 10px 18px;
       border-radius: 999px;
       font-size: .9rem;
-      transition: background .2s, border-color .2s;
+      font-weight: 500;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.025);
     }
-    .contact-links a:hover { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+    .contact-links a:hover {
+      background: #f0f0f2;
+      transform: translateY(-1px) scale(1.015);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
     .contact-links a svg { flex-shrink: 0; }
-
-    /* ─── LAYOUT ─────────────────────────────────── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 20px 80px;
-    }
-
-    /* ─── SECTION ────────────────────────────────── */
-    section { margin-bottom: 52px; }
-    .section-title {
-      font-size: 1.1rem;
+    .contact-links a[download] {
+      background: var(--apple-blue);
+      color: var(--apple-card);
+      border-color: var(--apple-blue);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--teal);
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 8px;
-      margin-bottom: 24px;
+      box-shadow: 0 10px 24px rgba(0, 102, 204, 0.18);
+    }
+    .contact-links a[download]:hover {
+      background: #0077ed;
+      border-color: #0077ed;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 32px rgba(0, 102, 204, 0.24);
     }
 
-    /* ─── SUMMARY ────────────────────────────────── */
-    .summary-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 28px;
-      font-size: .97rem;
-    }
-    .summary-card p + p { margin-top: 12px; }
-
-    /* ─── SKILLS ─────────────────────────────────── */
-    .skill-groups {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .skill-group {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-    }
-    .skill-group h4 {
-      font-size: .82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--teal);
-      margin-bottom: 10px;
-    }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .badge {
-      background: var(--light);
-      border: 1px solid var(--border);
-      color: var(--navy);
-      font-size: .8rem;
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    /* ─── TIMELINE ───────────────────────────────── */
-    .timeline { position: relative; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 16px; top: 6px; bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-    .tl-item {
-      position: relative;
-      padding-left: 46px;
-      margin-bottom: 32px;
-    }
-    .tl-dot {
-      position: absolute;
-      left: 7px; top: 6px;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--white);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-    .tl-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-    }
-    .tl-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-    .tl-role { font-weight: 700; font-size: 1rem; }
-    .tl-date {
-      font-size: .82rem;
-      color: var(--muted);
-      white-space: nowrap;
-      background: var(--light);
-      border: 1px solid var(--border);
-      padding: 2px 10px;
-      border-radius: 999px;
-    }
-    .tl-company {
-      font-size: .9rem;
-      color: var(--teal);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .tl-card ul {
-      list-style: none;
-      padding: 0;
-    }
-    .tl-card li {
-      font-size: .9rem;
-      padding: 4px 0 4px 16px;
-      position: relative;
-      color: #2d4450;
-    }
-    .tl-card li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: .75rem;
-      top: 6px;
-    }
-
-    /* ─── AWARDS ─────────────────────────────────── */
-    .awards-list { display: flex; flex-direction: column; gap: 14px; }
-    .award-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: 10px;
-      padding: 16px 20px;
-      font-size: .9rem;
-    }
-    .award-card .award-title { font-weight: 600; }
-    .award-card .award-meta { color: var(--muted); font-size: .82rem; margin-top: 3px; }
-    .award-photos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .award-photos a {
-      display: block;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .award-photos a:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
-    .award-photos img {
-      height: 140px;
-      width: auto;
-      max-width: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ─── PUBLICATIONS ───────────────────────────── */
-    .pub-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .pub-header .section-title { margin-bottom: 0; }
-    .scholar-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--teal);
-      color: var(--white);
-      text-decoration: none;
-      padding: 7px 18px;
-      border-radius: 999px;
-      font-size: .85rem;
-      font-weight: 600;
-      transition: background .2s;
-      white-space: nowrap;
-    }
-    .scholar-btn:hover { background: var(--accent); color: var(--navy); }
-    .pub-list { display: flex; flex-direction: column; gap: 14px; }
-    .pub-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .pub-badge {
-      background: var(--teal);
-      color: var(--white);
-      font-size: .72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      white-space: nowrap;
-      margin-top: 2px;
-    }
-    .pub-badge.award { background: #b8860b; }
-    .pub-title {
-      font-weight: 700;
-      font-size: .97rem;
-      margin-bottom: 4px;
-    }
-    .pub-title a {
-      color: var(--navy);
-      text-decoration: none;
-    }
-    .pub-title a:hover { color: var(--teal); text-decoration: underline; }
-    .pub-authors { font-size: .85rem; color: var(--muted); margin-bottom: 5px; }
-    .pub-authors strong { color: var(--navy); }
-    .pub-venue {
-      font-size: .85rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-    .pub-venue em { color: var(--teal); font-style: italic; font-weight: 600; }
-    .pub-cite {
-      background: var(--light);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .78rem;
-      padding: 2px 9px;
-      border-radius: 999px;
-    }
-
-    /* ─── INTL SECTION ───────────────────────────── */
-    .intl-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .intl-pill {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 18px;
-      font-size: .9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .flag { font-size: 1.3rem; }
-
-    /* ─── FOOTER ─────────────────────────────────── */
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: .82rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ─── STICKY NAV ─────────────────────────────── */
+    /* ─── FLOATING GLASS NAV ──────────────────────── */
     .sticky-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--white);
-      border-bottom: 2px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .sticky-nav ul {
       display: flex;
       list-style: none;
       margin: 0 auto;
-      padding: 0;
-      max-width: 900px;
+      padding: 0 10px;
+      max-width: 980px;
       overflow-x: auto;
       scrollbar-width: none;
     }
     .sticky-nav ul::-webkit-scrollbar { display: none; }
     .sticky-nav ul li a {
       display: block;
-      padding: 14px 18px;
+      padding: 15px 16px;
       font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--navy);
+      font-weight: 500;
+      color: var(--apple-text);
+      opacity: .72;
       text-decoration: none;
       white-space: nowrap;
-      border-bottom: 3px solid transparent;
-      transition: color .2s, border-color .2s;
+      border-bottom: 2px solid transparent;
+      transition: opacity .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
     }
     .sticky-nav ul li a:hover,
     .sticky-nav ul li a.active {
-      color: var(--teal);
-      border-bottom-color: var(--accent);
+      opacity: 1;
+      color: var(--apple-blue);
+      border-bottom-color: var(--apple-blue);
     }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.55rem; }
+    /* ─── LAYOUT ──────────────────────────────────── */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 24px 104px;
+    }
+    section {
+      margin-bottom: 76px;
+      scroll-margin-top: 84px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--apple-text);
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 28px;
+      text-transform: none;
+    }
+
+    /* ─── APPLE CARDS / MICRO-INTERACTIONS ────────── */
+    .summary-card,
+    .tl-card,
+    .award-card,
+    .pub-card,
+    .skill-group,
+    .intl-pill {
+      background: var(--apple-card);
+      border: 1px solid rgba(0,0,0,0.035);
+      border-radius: 22px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.025);
+      transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .summary-card:hover,
+    .tl-card:hover,
+    .award-card:hover,
+    .pub-card:hover,
+    .skill-group:hover,
+    .intl-pill:hover {
+      transform: translateY(-3px) scale(1.006);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.055);
+      border-color: rgba(0, 102, 204, 0.16);
+    }
+
+    .summary-card {
+      padding: 32px;
+      font-size: 1rem;
+      color: #2d2d32;
+    }
+    .summary-card p + p { margin-top: 14px; }
+
+    /* ─── SKILLS AS BENTO GRID ────────────────────── */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    .skill-group {
+      padding: 24px;
+      min-height: 148px;
+    }
+    .skill-group:nth-child(1),
+    .skill-group:nth-child(4) {
+      grid-column: span 1;
+    }
+    .skill-group h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -0.005em;
+      color: var(--apple-sub);
+      margin-bottom: 14px;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      background: var(--apple-bg);
+      border: 1px solid transparent;
+      color: var(--apple-text);
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 6px 13px;
+      border-radius: 10px;
+      cursor: default;
+      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .badge:hover {
+      background: var(--apple-blue);
+      color: var(--apple-card);
+      border-color: var(--apple-blue);
+      transform: scale(1.045);
+    }
+
+    /* ─── TIMELINE ────────────────────────────────── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(var(--border), rgba(232,232,237,0.15));
+    }
+    .tl-item {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 30px;
+    }
+    .tl-dot {
+      position: absolute;
+      left: 7px;
+      top: 12px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--apple-blue);
+      border: 4px solid var(--apple-bg);
+      box-shadow: 0 0 0 2px rgba(0,102,204,0.16);
+    }
+    .tl-card { padding: 28px 30px; }
+    .tl-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .tl-role {
+      font-weight: 800;
+      font-size: 1.03rem;
+      letter-spacing: -0.01em;
+    }
+    .tl-date {
+      font-size: .82rem;
+      color: var(--apple-sub);
+      white-space: nowrap;
+      background: var(--apple-bg);
+      border: none;
+      padding: 4px 11px;
+      border-radius: 999px;
+    }
+    .tl-company {
+      font-size: .92rem;
+      color: var(--apple-blue);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .tl-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tl-card li {
+      font-size: .92rem;
+      padding: 5px 0 5px 17px;
+      position: relative;
+      color: #33343a;
+    }
+    .tl-card li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--apple-blue);
+      font-weight: 800;
+      top: 3px;
+    }
+
+    /* ─── AWARDS ──────────────────────────────────── */
+    .awards-list { display: flex; flex-direction: column; gap: 18px; }
+    .award-card {
+      border-left: none;
+      padding: 24px 26px;
+      font-size: .93rem;
+    }
+    .award-card .award-title {
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .award-card .award-meta {
+      color: var(--apple-sub);
+      font-size: .84rem;
+      margin-top: 4px;
+    }
+    .award-photos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .award-photos a,
+    #education a {
+      display: block;
+      border-radius: 14px !important;
+      overflow: hidden;
+      border: 1px solid var(--border) !important;
+      flex-shrink: 0;
+      background: #fff;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease !important;
+    }
+    .award-photos a:hover,
+    #education a:hover {
+      transform: scale(1.025) !important;
+      box-shadow: 0 12px 32px rgba(0,0,0,.075) !important;
+      border-color: rgba(0,102,204,0.22) !important;
+    }
+    .award-photos img,
+    #education a img {
+      height: 140px;
+      width: auto;
+      max-width: 225px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: transform .22s ease, filter .22s ease;
+    }
+    .award-photos a:hover img,
+    #education a:hover img {
+      filter: saturate(1.04);
+    }
+    .no-rotate-fix {
+      position: static !important;
+      transform: none !important;
+      width: 210px !important;
+      height: 140px !important;
+      max-width: 210px !important;
+      object-fit: contain !important;
+      background: #fff;
+    }
+
+    /* ─── PUBLICATIONS ────────────────────────────── */
+    .pub-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .pub-header .section-title { margin-bottom: 0; }
+    .scholar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--apple-blue);
+      color: var(--apple-card);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: .86rem;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+      box-shadow: 0 8px 22px rgba(0,102,204,0.16);
+    }
+    .scholar-btn:hover {
+      background: #0077ed;
+      color: var(--apple-card);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,102,204,0.22);
+    }
+    .pub-list { display: flex; flex-direction: column; gap: 18px; }
+    .pub-card {
+      padding: 26px 28px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 17px;
+      align-items: start;
+    }
+    .pub-badge {
+      background: var(--apple-blue);
+      color: var(--apple-card);
+      font-size: .72rem;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+    .pub-badge.award { background: #b8860b; }
+    .pub-title {
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+    .pub-title a {
+      color: var(--apple-text);
+      text-decoration: none;
+    }
+    .pub-title a:hover { color: var(--apple-blue); text-decoration: underline; }
+    .pub-authors { font-size: .86rem; color: var(--apple-sub); margin-bottom: 7px; }
+    .pub-authors strong { color: var(--apple-text); }
+    .pub-venue {
+      font-size: .86rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .pub-venue em { color: var(--apple-blue); font-style: italic; font-weight: 700; }
+    .pub-cite {
+      background: var(--apple-bg);
+      border: none;
+      color: var(--apple-sub);
+      font-size: .78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ─── INTERNATIONAL ───────────────────────────── */
+    .intl-pills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .intl-pill {
+      padding: 18px 20px;
+      font-size: .92rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .flag { font-size: 1.3rem; }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .84rem;
+      color: var(--apple-sub);
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.55);
+    }
+    footer a { color: var(--apple-blue) !important; }
+
+    /* ─── APPLE GLASS LIGHTBOX ────────────────────── */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img {
+      max-width: 88%;
+      max-height: 80vh;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.10);
+      transform: scale(0.92);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      background: var(--apple-card);
+      border: 1px solid rgba(0,0,0,0.035);
+    }
+    .lightbox-overlay.active .lightbox-img { transform: scale(1); }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      color: var(--apple-text);
+      font-size: .9rem;
+      font-weight: 600;
+      background: var(--apple-card);
+      padding: 10px 24px;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      max-width: min(88vw, 760px);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* ─── BACK TO TOP ─────────────────────────────── */
+    .back-to-top {
+      position: fixed;
+      bottom: 36px;
+      right: 36px;
+      width: 48px;
+      height: 48px;
+      background: var(--apple-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--apple-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+      color: var(--apple-blue);
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 60px 18px 46px; }
+      .avatar { width: 104px; height: 104px; }
+      main { padding: 44px 16px 86px; }
+      section { margin-bottom: 58px; }
       .tl-header { flex-direction: column; }
-      .sticky-nav ul li a { padding: 12px 12px; font-size: .72rem; }
+      .timeline::before { left: 10px; }
+      .tl-dot { left: 1px; }
+      .tl-item { padding-left: 34px; }
+      .tl-card, .summary-card, .award-card, .pub-card, .skill-group { padding: 22px; }
+      .sticky-nav ul li a { padding: 13px 12px; font-size: .73rem; }
+      .pub-card { grid-template-columns: 1fr; }
+      .back-to-top { right: 18px; bottom: 22px; }
+      .lightbox-caption { bottom: 18px; font-size: .82rem; padding: 8px 16px; }
     }
   </style>
 </head>
 <body>
-
+<div class="lightbox-overlay" id="lightbox" aria-hidden="true">
+  <img src="" alt="Zoomed Image" class="lightbox-img" id="lightbox-img" />
+  <div class="lightbox-caption" id="lightbox-caption">Click anywhere to close</div>
+</div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 <!-- ─── HEADER ─────────────────────────────────────── -->
 <header>
   <img class="avatar" src="jpg/Profile_picture.jpg" alt="Kevin (Shuo-Wen) Chang" />
@@ -440,13 +640,13 @@
 
 <nav class="sticky-nav" aria-label="Page sections">
   <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
-    <li><a href="#awards">Honor &amp; Awards</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#international">International</a></li>
-    <li><a href="#summary">Summary</a></li>
   </ul>
 </nav>
 
@@ -623,9 +823,7 @@
           </ul>
           <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
             <a href="avif/2019_IEEE_SMC_Presentation_edited.avif" target="_blank" rel="noopener"
-               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;"
-               onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.15)'"
-               onmouseout="this.style.transform='';this.style.boxShadow=''">
+               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
               <img src="avif/2019_IEEE_SMC_Presentation_edited.avif" alt="IEEE SMC 2019 Presentation in Bari, Italy"
                    style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
             </a>
@@ -636,9 +834,7 @@
           </div>
           <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
             <a href="avif/NTU_graduation_president_lee_conferring.avif" target="_blank" rel="noopener"
-               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;"
-               onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.15)'"
-               onmouseout="this.style.transform='';this.style.boxShadow=''">
+               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
               <img src="avif/NTU_graduation_president_lee_conferring.avif" alt="NTU Graduation Ceremony 2019"
                    style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
             </a>
@@ -775,10 +971,8 @@
           <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
             <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance &amp; Healthcare Hackathon — 3rd Place certificate" />
           </a>
-          <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener"
-             style="position:relative;width:210px;height:140px;overflow:hidden;flex-shrink:0;">
-            <img src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance &amp; Healthcare Hackathon — People's Choice Award certificate"
-                 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);height:210px;width:140px;max-width:none;object-fit:cover;" />
+          <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener" style="width:210px;height:140px;display:flex;align-items:center;justify-content:center;">
+            <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance &amp; Healthcare Hackathon — People's Choice Award certificate" />
           </a>
         </div>
       </div>
@@ -809,7 +1003,6 @@
         View all on Google Scholar
       </a>
     </div>
-    <div style="border-bottom:2px solid var(--accent);margin:10px 0 24px;"></div>
 
     <div class="pub-list">
 
@@ -873,32 +1066,98 @@
   </p>
 </footer>
 <script>
-  // Smooth scroll offset for sticky nav height
+  // Smooth scroll with sticky-nav offset.
   document.querySelectorAll('.sticky-nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
-      const navH = document.querySelector('.sticky-nav').offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+      const nav = document.querySelector('.sticky-nav');
+      const navH = nav ? nav.offsetHeight : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH - 12;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
 
-  // Highlight active tab on scroll
   const sections = Array.from(document.querySelectorAll('section[id]'));
   const navLinks = document.querySelectorAll('.sticky-nav a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.sticky-nav a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  sections.forEach(s => observer.observe(s));
-</script>
+  const backToTopBtn = document.getElementById('backToTop');
 
+  function updateScrollUI() {
+    let currentActive = sections.length ? sections[0].getAttribute('id') : '';
+    const nav = document.querySelector('.sticky-nav');
+    const navH = (nav ? nav.offsetHeight : 0) + 24;
+    const scrollPos = window.scrollY;
+
+    if (backToTopBtn) {
+      if (scrollPos > 400) backToTopBtn.classList.add('show');
+      else backToTopBtn.classList.remove('show');
+    }
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - navH;
+      if (scrollPos >= sectionTop) currentActive = section.getAttribute('id');
+    });
+
+    // Force the final section active when the page reaches the bottom.
+    if (sections.length && (window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 20) {
+      currentActive = sections[sections.length - 1].getAttribute('id');
+    }
+
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === `#${currentActive}`) a.classList.add('active');
+    });
+  }
+
+  window.addEventListener('scroll', updateScrollUI, { passive: true });
+  window.addEventListener('resize', updateScrollUI);
+  window.addEventListener('load', updateScrollUI);
+  updateScrollUI();
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Glassmorphism lightbox for award and education images.
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  document.querySelectorAll('.award-photos a, #education a').forEach(anchor => {
+    const img = anchor.querySelector('img');
+    if (!img || !lightbox || !lightboxImg) return;
+
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const imageSrc = this.getAttribute('href') || img.getAttribute('src');
+      const imageAlt = img.getAttribute('alt') || 'Image View';
+
+      lightboxImg.src = imageSrc;
+      lightboxImg.alt = imageAlt;
+      if (lightboxCaption) lightboxCaption.innerText = imageAlt;
+
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lightboxImg) lightboxImg.src = '';
+  }
+
+  if (lightbox) lightbox.addEventListener('click', closeLightbox);
+  if (lightboxImg) lightboxImg.addEventListener('click', e => e.stopPropagation());
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
+  });
+</script>
 </body>
 </html>
