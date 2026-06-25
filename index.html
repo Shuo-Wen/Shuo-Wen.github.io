@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kevin (Shuo-Wen) Chang — Physical Design & AI CAD Engineer</title>
-    <style>
+  <style>
     :root {
       --apple-bg: #f5f5f7;
       --apple-text: #1d1d1f;
@@ -55,7 +55,7 @@
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.045em;
-      line-height: 0.98;
+      line-height: 1.1;
       color: var(--apple-text);
     }
     header .subtitle {
@@ -162,10 +162,7 @@
       font-weight: 800;
       letter-spacing: -0.035em;
       color: var(--apple-text);
-      border-bottom: none;
-      padding-bottom: 0;
       margin-bottom: 28px;
-      text-transform: none;
     }
 
     /* ─── APPLE CARDS / MICRO-INTERACTIONS ────────── */
@@ -209,14 +206,9 @@
       padding: 24px;
       min-height: 148px;
     }
-    .skill-group:nth-child(1),
-    .skill-group:nth-child(4) {
-      grid-column: span 1;
-    }
     .skill-group h4 {
       font-size: .88rem;
       font-weight: 700;
-      text-transform: none;
       letter-spacing: -0.005em;
       color: var(--apple-sub);
       margin-bottom: 14px;
@@ -250,10 +242,11 @@
       content: '';
       position: absolute;
       left: 16px;
-      top: 8px;
+      top: 12px;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(var(--border), rgba(232,232,237,0.15));
+      background: linear-gradient(#d8e3ea, rgba(216,227,234,0.15));
+      z-index: 0;
     }
     .tl-item {
       position: relative;
@@ -262,7 +255,8 @@
     }
     .tl-dot {
       position: absolute;
-      left: 7px;
+      left: 16px;
+      transform: translateX(-50%);
       top: 12px;
       width: 18px;
       height: 18px;
@@ -270,6 +264,7 @@
       background: var(--apple-blue);
       border: 4px solid var(--apple-bg);
       box-shadow: 0 0 0 2px rgba(0,102,204,0.16);
+      z-index: 2;
     }
     .tl-card { padding: 28px 30px; }
     .tl-header {
@@ -290,7 +285,6 @@
       color: var(--apple-sub);
       white-space: nowrap;
       background: var(--apple-bg);
-      border: none;
       padding: 4px 11px;
       border-radius: 999px;
     }
@@ -300,10 +294,7 @@
       font-weight: 600;
       margin-bottom: 14px;
     }
-    .tl-card ul {
-      list-style: none;
-      padding: 0;
-    }
+    .tl-card ul { list-style: none; padding: 0; }
     .tl-card li {
       font-size: .92rem;
       padding: 5px 0 5px 17px;
@@ -321,20 +312,10 @@
 
     /* ─── AWARDS ──────────────────────────────────── */
     .awards-list { display: flex; flex-direction: column; gap: 18px; }
-    .award-card {
-      border-left: none;
-      padding: 24px 26px;
-      font-size: .93rem;
-    }
-    .award-card .award-title {
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-    .award-card .award-meta {
-      color: var(--apple-sub);
-      font-size: .84rem;
-      margin-top: 4px;
-    }
+    .award-card { padding: 24px 26px; font-size: .93rem; }
+    .award-card .award-title { font-weight: 800; letter-spacing: -0.01em; }
+    .award-card .award-meta { color: var(--apple-sub); font-size: .84rem; margin-top: 4px; }
+    
     .award-photos {
       display: flex;
       flex-wrap: wrap;
@@ -344,18 +325,18 @@
     .award-photos a,
     #education a {
       display: block;
-      border-radius: 14px !important;
+      border-radius: 14px;
       overflow: hidden;
-      border: 1px solid var(--border) !important;
+      border: 1px solid var(--border);
       flex-shrink: 0;
       background: #fff;
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease !important;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
     }
     .award-photos a:hover,
     #education a:hover {
-      transform: scale(1.025) !important;
-      box-shadow: 0 12px 32px rgba(0,0,0,.075) !important;
-      border-color: rgba(0,102,204,0.22) !important;
+      transform: scale(1.025);
+      box-shadow: 0 12px 32px rgba(0,0,0,.075);
+      border-color: rgba(0,102,204,0.22);
     }
     .award-photos img,
     #education a img {
@@ -372,8 +353,6 @@
       filter: saturate(1.04);
     }
     .no-rotate-fix {
-      position: static !important;
-      transform: none !important;
       width: 210px !important;
       height: 140px !important;
       max-width: 210px !important;
@@ -408,7 +387,6 @@
     }
     .scholar-btn:hover {
       background: #0077ed;
-      color: var(--apple-card);
       transform: translateY(-1px);
       box-shadow: 0 12px 28px rgba(0,102,204,0.22);
     }
@@ -430,38 +408,16 @@
       text-transform: uppercase;
       letter-spacing: .035em;
       white-space: nowrap;
-      margin-top: 0;
     }
     .pub-badge.award { background: #b8860b; }
-    .pub-title {
-      font-weight: 800;
-      font-size: 1rem;
-      margin-bottom: 5px;
-      letter-spacing: -0.01em;
-    }
-    .pub-title a {
-      color: var(--apple-text);
-      text-decoration: none;
-    }
+    .pub-title { font-weight: 800; font-size: 1rem; margin-bottom: 5px; letter-spacing: -0.01em; }
+    .pub-title a { color: var(--apple-text); text-decoration: none; }
     .pub-title a:hover { color: var(--apple-blue); text-decoration: underline; }
     .pub-authors { font-size: .86rem; color: var(--apple-sub); margin-bottom: 7px; }
     .pub-authors strong { color: var(--apple-text); }
-    .pub-venue {
-      font-size: .86rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
+    .pub-venue { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .86rem; }
     .pub-venue em { color: var(--apple-blue); font-style: italic; font-weight: 700; }
-    .pub-cite {
-      background: var(--apple-bg);
-      border: none;
-      color: var(--apple-sub);
-      font-size: .78rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
+    .pub-cite { background: var(--apple-bg); color: var(--apple-sub); font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
 
     /* ─── INTERNATIONAL ───────────────────────────── */
     .intl-pills {
@@ -469,13 +425,7 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
     }
-    .intl-pill {
-      padding: 18px 20px;
-      font-size: .92rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .intl-pill { padding: 18px 20px; font-size: .92rem; display: flex; align-items: center; gap: 12px; }
     .flag { font-size: 1.3rem; }
 
     /* ─── FOOTER ──────────────────────────────────── */
@@ -492,29 +442,18 @@
     /* ─── APPLE GLASS LIGHTBOX ────────────────────── */
     .lightbox-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      pointer-events: none;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2000; opacity: 0; pointer-events: none;
       transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: zoom-out;
     }
-    .lightbox-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
     .lightbox-img {
-      max-width: 88%;
-      max-height: 80vh;
+      max-width: 88%; max-height: 80vh;
       border-radius: 24px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.10);
       transform: scale(0.92);
@@ -524,51 +463,29 @@
     }
     .lightbox-overlay.active .lightbox-img { transform: scale(1); }
     .lightbox-caption {
-      position: absolute;
-      bottom: 30px;
-      color: var(--apple-text);
-      font-size: .9rem;
-      font-weight: 600;
+      position: absolute; bottom: 30px;
+      color: var(--apple-text); font-size: .9rem; font-weight: 600;
       background: var(--apple-card);
-      padding: 10px 24px;
-      border-radius: 999px;
+      padding: 10px 24px; border-radius: 999px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-      max-width: min(88vw, 760px);
-      text-align: center;
+      max-width: min(88vw, 760px); text-align: center;
       pointer-events: none;
     }
 
     /* ─── BACK TO TOP ─────────────────────────────── */
     .back-to-top {
-      position: fixed;
-      bottom: 36px;
-      right: 36px;
-      width: 48px;
-      height: 48px;
-      background: var(--apple-card);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      color: var(--apple-text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      cursor: pointer;
-      z-index: 99;
-      opacity: 0;
-      pointer-events: none;
+      position: fixed; bottom: 36px; right: 36px;
+      width: 48px; height: 48px;
+      background: var(--apple-card); border: 1px solid var(--border);
+      border-radius: 50%; color: var(--apple-text);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; cursor: pointer; z-index: 99;
+      opacity: 0; pointer-events: none;
       transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
-    .back-to-top.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .back-to-top:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
-      color: var(--apple-blue);
-    }
+    .back-to-top.show { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); color: var(--apple-blue); }
 
     @media (max-width: 700px) {
       header { padding: 60px 18px 46px; }
@@ -577,7 +494,7 @@
       section { margin-bottom: 58px; }
       .tl-header { flex-direction: column; }
       .timeline::before { left: 10px; }
-      .tl-dot { left: 1px; }
+      .tl-dot { left: 10px; }
       .tl-item { padding-left: 34px; }
       .tl-card, .summary-card, .award-card, .pub-card, .skill-group { padding: 22px; }
       .sticky-nav ul li a { padding: 13px 12px; font-size: .73rem; }
@@ -585,95 +502,47 @@
       .back-to-top { right: 18px; bottom: 22px; }
       .lightbox-caption { bottom: 18px; font-size: .82rem; padding: 8px 16px; }
     }
-  
-
-    
-
-/* ===== FINAL PIXEL-PERFECT CONTINUOUS TIMELINE ===== */
-.timeline {
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 16px;   /* center alignment with dot */
-  top: 12px;
-  bottom: 0;
-  width: 2px;
-  background: #d8e3ea;
-  z-index: 0;
-}
-
-/* perfectly center the dot on the line */
-.tl-dot {
-  position: absolute;
-  left: 16px;
-  transform: translateX(-50%);  /* center horizontally */
-  top: 12px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--apple-blue);
-  border: 4px solid var(--apple-bg);
-  box-shadow: 0 0 0 2px rgba(0,102,204,0.16);
-  z-index: 2;
-}
-
-/* remove broken segment lines */
-.tl-item::before {
-  display: none !important;
-}
-
-@media (max-width: 700px) {
-  .timeline::before { left: 10px; }
-  .tl-dot { left: 10px; }
-}
-
-</style>
+  </style>
 </head>
 <body>
+
 <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
   <img src="" alt="Zoomed Image" class="lightbox-img" id="lightbox-img" />
   <div class="lightbox-caption" id="lightbox-caption">Click anywhere to close</div>
 </div>
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
-<!-- ─── HEADER ─────────────────────────────────────── -->
+
 <header>
   <img class="avatar" src="jpg/Profile_picture.jpg" alt="Kevin (Shuo-Wen) Chang" />
   <h1>Kevin (Shuo-Wen) Chang</h1>
-  <p class="subtitle">Physical Design &amp; AI CAD Engineer</p>
+  <p class="subtitle">Physical Design & AI CAD Engineer</p>
 
   <div class="contact-links">
-    <!-- Email -->
     <a href="mailto:changshuowen@gmail.com">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
       </svg>
       changshuowen@gmail.com
     </a>
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener">
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
       LinkedIn
     </a>
-    <!-- Google Scholar -->
     <a href="https://scholar.google.com/citations?user=huNBqB0AAAAJ" target="_blank" rel="noopener">
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
         <path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
       </svg>
       Google Scholar
     </a>
-    <!-- GitHub -->
     <a href="https://github.com/Shuo-Wen" target="_blank" rel="noopener">
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
       </svg>
       GitHub
     </a>
-    <!-- CV Download -->
     <a href="pdf/CV_SW_cmprs_small.pdf" download>
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
@@ -697,7 +566,6 @@
 
 <main>
 
-  <!-- ─── SUMMARY ──────────────────────────────────── -->
   <section id="summary">
     <h2 class="section-title">Professional Summary</h2>
     <div class="summary-card">
@@ -706,74 +574,48 @@
     </div>
   </section>
 
-  <!-- ─── SKILLS ────────────────────────────────────── -->
   <section id="skills">
     <h2 class="section-title">Skills</h2>
     <div class="skill-groups">
       <div class="skill-group">
-        <h4>Digital Implementation &amp; P&amp;R</h4>
+        <h4>Digital Implementation & P&R</h4>
         <div class="badges">
-          <span class="badge">Innovus</span>
-          <span class="badge">ICC2</span>
-          <span class="badge">Floorplan</span>
-          <span class="badge">Placement</span>
-          <span class="badge">CTS</span>
-          <span class="badge">Routing</span>
-          <span class="badge">Timing Closure</span>
-          <span class="badge">QoR Optimization</span>
+          <span class="badge">Innovus</span><span class="badge">ICC2</span><span class="badge">Floorplan</span><span class="badge">Placement</span><span class="badge">CTS</span><span class="badge">Routing</span><span class="badge">Timing Closure</span><span class="badge">QoR Optimization</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>Timing &amp; Power Analysis</h4>
+        <h4>Timing & Power Analysis</h4>
         <div class="badges">
-          <span class="badge">STA</span>
-          <span class="badge">PPA Evaluation</span>
-          <span class="badge">Delay Modeling</span>
-          <span class="badge">Timing Degradation</span>
-          <span class="badge">Power Analysis</span>
+          <span class="badge">STA</span><span class="badge">PPA Evaluation</span><span class="badge">Delay Modeling</span><span class="badge">Timing Degradation</span><span class="badge">Power Analysis</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>Programming &amp; Scripting</h4>
+        <h4>Programming & Scripting</h4>
         <div class="badges">
-          <span class="badge">Tcl</span>
-          <span class="badge">Perl</span>
-          <span class="badge">Python</span>
-          <span class="badge">Shell</span>
-          <span class="badge">EDA Flow Automation</span>
+          <span class="badge">Tcl</span><span class="badge">Perl</span><span class="badge">Python</span><span class="badge">Shell</span><span class="badge">EDA Flow Automation</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>AI &amp; Machine Learning</h4>
+        <h4>AI & Machine Learning</h4>
         <div class="badges">
-          <span class="badge">Multi-Agent AI</span>
-          <span class="badge">LLM Integration</span>
-          <span class="badge">MCP Protocol</span>
-          <span class="badge">Few-Shot Prompting</span>
-          <span class="badge">NMT Compression</span>
+          <span class="badge">Multi-Agent AI</span><span class="badge">LLM Integration</span><span class="badge">MCP Protocol</span><span class="badge">Few-Shot Prompting</span><span class="badge">NMT Compression</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>Physical Verification &amp; Sign-off</h4>
+        <h4>Physical Verification & Sign-off</h4>
         <div class="badges">
-          <span class="badge">DRV Analysis</span>
-          <span class="badge">DRC (Calibre)</span>
-          <span class="badge">LEC</span>
-          <span class="badge">Advanced Node Sign-off</span>
+          <span class="badge">DRV Analysis</span><span class="badge">DRC (Calibre)</span><span class="badge">LEC</span><span class="badge">Advanced Node Sign-off</span>
         </div>
       </div>
       <div class="skill-group">
         <h4>Languages</h4>
         <div class="badges">
-          <span class="badge">Mandarin (Native)</span>
-          <span class="badge">English (Professional)</span>
-          <span class="badge">Japanese (JLPT N3)</span>
+          <span class="badge">Mandarin (Native)</span><span class="badge">English (Professional)</span><span class="badge">Japanese (JLPT N3)</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── EXPERIENCE ────────────────────────────────── -->
   <section id="experience">
     <h2 class="section-title">Professional Experience</h2>
     <div class="timeline">
@@ -788,20 +630,16 @@
           <p class="tl-company">Qualcomm Semiconductor Corporation · Hsinchu, Taiwan</p>
           <ul>
             <li>Architected a scalable Multi-Agent AI platform using MCP to unify natural language inputs, GB-scale EDA logs, and binary waveform data into an automated debugging ecosystem.</li>
-            <li>Developed a production-grade Waveform &amp; EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
-
-  <!-- ✅ Embedded Architecture Diagram -->
-  <details style="margin-top:16px;">
-    <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;font-size:0.9rem;">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
-
-    <div style="margin-top:12px;">
-      <a href="jpg/LLM_system_overall.jpg" target="_blank">
-        <img src="jpg/LLM_system_overall.jpg"
-             alt="Multi-Agent AI + MCP + EDA system architecture"
-             style="width:100%;max-width:580px;border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,0.08);">
-      </a>
-    </div>
-  </details></li>
+            <li>Developed a production-grade Waveform & EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
+              <details style="margin-top:16px;">
+                <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;font-size:0.9rem;">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
+                <div style="margin-top:12px;">
+                  <a href="jpg/LLM_system_overall.jpg" target="_blank">
+                    <img src="jpg/LLM_system_overall.jpg" alt="Multi-Agent AI + MCP + EDA system architecture" style="width:100%;max-width:580px;border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,0.08);">
+                  </a>
+                </div>
+              </details>
+            </li>
             <li>Engineered a closed-loop Self-Correction mechanism tracking background Linux subprocess stdout errors, achieving 100% execution success rate with 2–3 second auto-debug cycles.</li>
             <li>Designed enterprise security guardrails by isolating AWS IAM roles within local MCP servers, ensuring 100% corporate security compliance and preventing LLM exposure to credentials.</li>
             <li>Analyzed large-scale test datasets with NYCU lab to identify abnormal design behavior and systematic failure patterns related to DFT, MBIST, and ATPG diagnosis.</li>
@@ -813,17 +651,17 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">APR Opt Engine Engineer — Innovus R&amp;D</span>
+            <span class="tl-role">APR Opt Engine Engineer — Innovus R&D</span>
             <span class="tl-date">Feb 2020 – Jul 2021</span>
           </div>
           <p class="tl-company">Cadence Design Systems · Hsinchu, Taiwan</p>
           <ul>
-            <li>Executed Innovus APR flows on production designs from Apple &amp; Qualcomm across advanced process nodes as the sole optimization-engine engineer in Taiwan.</li>
+            <li>Executed Innovus APR flows on production designs from Apple & Qualcomm across advanced process nodes as the sole optimization-engine engineer in Taiwan.</li>
             <li>Analyzed PPA and runtime behavior across diverse advanced-node designs, identifying implementation bottlenecks and driving improvements in timing closure and QoR.</li>
             <li>Conducted detailed DRV analysis across floorplans, netlists, and layout data; deeply analyzed timing and power degradation caused by APR optimization algorithms.</li>
-            <li>Verified and evaluated ML-assisted P&amp;R optimization features within the GigaOpt engine, focusing on cell delay model QoR and PPA impact.</li>
-            <li>Slashed Innovus P&amp;R turnaround time by <strong>63%</strong> (4 hours → 1.5 hours) with zero regression by profiling the POD pipeline and fine-tuning optimization constraints.</li>
-            <li>Collaborated with R&amp;D teams to debug complex tool behavior and validate fixes for customer-reported issues on advanced N4 technologies.</li>
+            <li>Verified and evaluated ML-assisted P&R optimization features within the GigaOpt engine, focusing on cell delay model QoR and PPA impact.</li>
+            <li>Slashed Innovus P&R turnaround time by <strong>63%</strong> (4 hours → 1.5 hours) with zero regression by profiling the POD pipeline and fine-tuning optimization constraints.</li>
+            <li>Collaborated with R&D teams to debug complex tool behavior and validate fixes for customer-reported issues on advanced N4 technologies.</li>
           </ul>
         </div>
       </div>
@@ -859,8 +697,6 @@
         </div>
       </div>
 
-    </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
@@ -876,9 +712,9 @@
         </div>
       </div>
 
+    </div>
   </section>
 
-  <!-- ─── EDUCATION ─────────────────────────────────── -->
   <section id="education">
     <h2 class="section-title">Education</h2>
     <div class="timeline">
@@ -892,29 +728,23 @@
           </div>
           <p class="tl-company">National Taiwan University · Taipei, Taiwan</p>
           <ul>
-            <li>GPA: 4.23 / 4.30 &nbsp;|&nbsp; Rank: <strong>8 / 91</strong></li>
+            <li>GPA: 4.23 / 4.30  |  Rank: <strong>8 / 91</strong></li>
             <li>Coursework: Artificial Neural Networks (A+), Big Data Systems (A+)</li>
           </ul>
           <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener"
-               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
-              <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy"
-                   style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
+            <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener">
+              <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy" />
             </a>
             <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
-              My thesis was presented on 9th Oct 2019 in Bari, Italy. I was invited to serve as the
-              co-chair of my session: <em>Image Processing / Pattern Recognition (II)</em>.
+              My thesis was presented on 9th Oct 2019 in Bari, Italy. I was invited to serve as the co-chair of my session: <em>Image Processing / Pattern Recognition (II)</em>.
             </p>
           </div>
           <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener"
-               style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
-              <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019"
-                   style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
+            <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener">
+              <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019" />
             </a>
             <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
-              The former president of NTU and IEEE Fellow, Prof. Si-Chen Lee, conferred the student
-              representative on the graduation reel at the 2019 graduation ceremony of EECS.
+              The former president of NTU and IEEE Fellow, Prof. Si-Chen Lee, conferred the student representative on the graduation reel at the 2019 graduation ceremony of EECS.
             </p>
           </div>
         </div>
@@ -924,17 +754,15 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            
-<span class="tl-role">Exchange Student</span>
+            <span class="tl-role">Exchange Student</span>
             <span class="tl-date">Aug 2018 – Feb 2019</span>
           </div>
           <p class="tl-company">Katholieke Universiteit Leuven · Leuven, Belgium</p>
           <ul>
             <li><strong>Selected as International Scholar:</strong> Awarded a highly competitive, full academic scholarship by KU Leuven (#1 in Belgium). The merit-based sponsorship fully covered tuition, a EUR 900/month stipend, and travel grants.</li>
             <li><strong>Rapid Software Upskilling:</strong> Leveraged a rigorous scientific environment (Faculty of Science) to master Java. Independently architected, developed, and deployed a GUI-based puzzle game for the final project (source code on GitHub).</li>
-            <li><strong>Global Network &amp; Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
+            <li><strong>Global Network & Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
             <li><strong>Cross-Border Resilience:</strong> Demonstrated exceptional time management and adaptability by navigating complex logistics, traveling to over 20 cities across 10 European countries within a 6-month period.</li>
-
           </ul>
         </div>
       </div>
@@ -948,7 +776,7 @@
           </div>
           <p class="tl-company">National Taiwan Normal University · Taipei, Taiwan</p>
           <ul>
-            <li>GPA: 4.11 / 4.30 &nbsp;|&nbsp; Rank: <strong>1 / 59</strong></li>
+            <li>GPA: 4.11 / 4.30  |  Rank: <strong>1 / 59</strong></li>
             <li>Awarded 4-year full government scholarship by the Ministry of Education, Taiwan.</li>
           </ul>
         </div>
@@ -957,14 +785,13 @@
     </div>
   </section>
 
-  <!-- ─── AWARDS ────────────────────────────────────── -->
   <section id="awards">
-    <h2 class="section-title">Awards &amp; Recognition</h2>
+    <h2 class="section-title">Awards & Recognition</h2>
     <div class="awards-list">
 
       <div class="award-card">
         <p class="award-title">NTU Outstanding Student Award</p>
-        <p class="award-meta">National Taiwan University · 2019 &nbsp;|&nbsp; Only 13 recipients university-wide</p>
+        <p class="award-meta">National Taiwan University · 2019  |  Only 13 recipients university-wide</p>
         <div class="award-photos">
           <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
             <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
@@ -980,7 +807,7 @@
 
       <div class="award-card">
         <p class="award-title">NTU Outstanding Achievement Award — EECS</p>
-        <p class="award-meta">National Taiwan University · 2018 &nbsp;|&nbsp; Only 1 recipient in the entire EECS college</p>
+        <p class="award-meta">National Taiwan University · 2018  |  Only 1 recipient in the entire EECS college</p>
         <div class="award-photos">
           <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
             <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
@@ -990,7 +817,7 @@
 
       <div class="award-card">
         <p class="award-title">NTU Altruistic Award</p>
-        <p class="award-meta">National Taiwan University &nbsp;|&nbsp; Awarded for outstanding contributions to the community</p>
+        <p class="award-meta">National Taiwan University  |  Awarded for outstanding contributions to the community</p>
         <div class="award-photos">
           <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
             <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
@@ -1006,7 +833,7 @@
 
       <div class="award-card">
         <p class="award-title">IEEE VTS Best Paper Award</p>
-        <p class="award-meta">International · 2023 &nbsp;|&nbsp; Presented Nov 2024 &nbsp;|&nbsp; 3rd author</p>
+        <p class="award-meta">International · 2023  |  Presented Nov 2024  |  3rd author</p>
         <div class="award-photos">
           <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
             <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
@@ -1019,7 +846,7 @@
 
       <div class="award-card">
         <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
-        <p class="award-meta">National Competition · 2018 &nbsp;|&nbsp; Team: DermAI — AI-powered skin lesion diagnosis</p>
+        <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
         <div class="award-photos" style="align-items:flex-start;">
           <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
             <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
@@ -1035,23 +862,22 @@
           </div>
         </div>
         <p style="font-size:.85rem;color:var(--navy);margin-top:12px;line-height:1.6;">
-          Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;text-decoration:none;">Ken Sun</a>,
-          General Manager of Microsoft Taiwan.
+          Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;text-decoration:none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
         </p>
       </div>
 
       <div class="award-card">
-        <p class="award-title">Future Finance &amp; Healthcare Hackathon</p>
-        <p class="award-meta">National · 3rd Place &amp; People's Choice Award (Top-1 voted)</p>
+        <p class="award-title">Future Finance & Healthcare Hackathon</p>
+        <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
         <div class="award-photos">
           <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
-            <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance &amp; Healthcare Hackathon" />
+            <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
           </a>
           <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
-            <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance &amp; Healthcare Hackathon — 3rd Place certificate" />
+            <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
           </a>
-          <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener" style="width:210px;height:140px;display:flex;align-items:center;justify-content:center;">
-            <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance &amp; Healthcare Hackathon — People's Choice Award certificate" />
+          <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
+            <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
           </a>
         </div>
       </div>
@@ -1069,13 +895,10 @@
     </div>
   </section>
 
-  <!-- ─── PUBLICATIONS ────────────────────────────────── -->
   <section id="publications">
     <div class="pub-header">
-      <h2 class="section-title" style="border-bottom:none;margin-bottom:0;">Publications</h2>
-      <a class="scholar-btn"
-         href="https://scholar.google.com/citations?user=huNBqB0AAAAJ"
-         target="_blank" rel="noopener">
+      <h2 class="section-title">Publications</h2>
+      <a class="scholar-btn" href="https://scholar.google.com/citations?user=huNBqB0AAAAJ" target="_blank" rel="noopener">
         <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
           <path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
         </svg>
@@ -1088,10 +911,7 @@
         <span class="pub-badge award">Nature Citation</span>
         <div>
           <p class="pub-title">
-            <a href="https://ieeexplore.ieee.org/abstract/document/8914048"
-               target="_blank"
-               rel="noopener noreferrer"
-               title="https://ieeexplore.ieee.org/abstract/document/8914048">
+            <a href="https://ieeexplore.ieee.org/abstract/document/8914048" target="_blank" rel="noopener noreferrer" title="https://ieeexplore.ieee.org/abstract/document/8914048">
               Deep Learning-based Microscopy Segmentation
             </a>
           </p>
@@ -1106,24 +926,16 @@
             <div style="margin-top:8px;">
               <p style="font-size:0.85rem;">
                 Referenced in
-                <a href="https://www.nature.com/articles/s42256-021-00420-0"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   title="https://www.nature.com/articles/s42256-021-00420-0"
-                   style="color:var(--teal);font-weight:600;text-decoration:none;">
+                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--teal);font-weight:600;text-decoration:none;">
                   Nature Machine Intelligence article
                 </a>
               </p>
-              <img src="jpg/citation_by_nature.jpg"
-                   alt="Nature Machine Intelligence citation screenshot"
-                   style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(0,0,0,0.06);">
+              <img src="jpg/citation_by_nature.jpg" alt="Nature Machine Intelligence citation screenshot" style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(0,0,0,0.06);">
             </div>
           </details>
         </div>
       </div>
 
-
-      <!-- IEEE VTS 2023 -->
       <div class="pub-card">
         <span class="pub-badge award">Best Paper</span>
         <div>
@@ -1135,13 +947,12 @@
           <p class="pub-authors">Authors include <strong>Shuo-Wen Chang</strong> (3rd author) et al.</p>
           <div class="pub-venue">
             <em>IEEE VLSI Test Symposium (VTS)</em>
-            <span>· 2023 &nbsp;|&nbsp; Presented Nov 2024</span>
+            <span>· 2023  |  Presented Nov 2024</span>
             <span class="pub-cite">🏆 Best Paper Award</span>
           </div>
         </div>
       </div>
 
-      <!-- Frontiers in Neuroscience 2019 -->
       <div class="pub-card">
         <span class="pub-badge">Journal</span>
         <div>
@@ -1150,7 +961,7 @@
               Data-Driven Automation for Bio-Experiment Workflows
             </a>
           </p>
-          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al. &nbsp;(IMEC, Belgium)</p>
+          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al.  (IMEC, Belgium)</p>
           <div class="pub-venue">
             <em>Frontiers in Neuroscience</em>
             <span>· 2019</span>
@@ -1162,11 +973,10 @@
     </div>
   </section>
 
-  <!-- ─── INTERNATIONAL ──────────────────────────────── -->
   <section id="international">
     <h2 class="section-title">International Experience</h2>
     <div class="intl-pills">
-      <div class="intl-pill"><span class="flag">🇧🇪</span><span>Research internship at IMEC, Belgium — worked with European engineers &amp; scientists</span></div>
+      <div class="intl-pill"><span class="flag">🇧🇪</span><span>Research internship at IMEC, Belgium — worked with European engineers & scientists</span></div>
       <div class="intl-pill"><span class="flag">🇧🇪</span><span>Exchange student at KU Leuven — coursework and collaboration entirely in English</span></div>
       <div class="intl-pill"><span class="flag">🇸🇬</span><span>Engineering internship at MediaTek, Singapore</span></div>
       <div class="intl-pill"><span class="flag">🌐</span><span>Comfortable working across time zones, cultures, and engineering organizations</span></div>
@@ -1176,12 +986,13 @@
 </main>
 
 <footer>
-  <p>Kevin (Shuo-Wen) Chang &nbsp;·&nbsp;
+  <p>Kevin (Shuo-Wen) Chang  · 
     <a href="mailto:changshuowen@gmail.com" style="color:var(--teal);text-decoration:none;">changshuowen@gmail.com</a>
-    &nbsp;·&nbsp;
+     · 
     <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">LinkedIn</a>
   </p>
 </footer>
+
 <script>
   // Smooth scroll with sticky-nav offset.
   document.querySelectorAll('.sticky-nav a[href^="#"]').forEach(link => {
@@ -1216,7 +1027,6 @@
       if (scrollPos >= sectionTop) currentActive = section.getAttribute('id');
     });
 
-    // Force the final section active when the page reaches the bottom.
     if (sections.length && (window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 20) {
       currentActive = sections[sections.length - 1].getAttribute('id');
     }
