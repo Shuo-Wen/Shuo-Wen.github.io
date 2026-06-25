@@ -52,7 +52,7 @@
       box-shadow: 0 14px 36px rgba(0,0,0,0.08);
     }
     header h1 {
-      font-size: clamp(2.45rem, 6vw, 4.3rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.045em;
       line-height: 0.98;
@@ -585,7 +585,52 @@
       .back-to-top { right: 18px; bottom: 22px; }
       .lightbox-caption { bottom: 18px; font-size: .82rem; padding: 8px 16px; }
     }
-  </style>
+  
+
+    
+
+/* ===== FINAL PIXEL-PERFECT CONTINUOUS TIMELINE ===== */
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;   /* center alignment with dot */
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: #d8e3ea;
+  z-index: 0;
+}
+
+/* perfectly center the dot on the line */
+.tl-dot {
+  position: absolute;
+  left: 16px;
+  transform: translateX(-50%);  /* center horizontally */
+  top: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--apple-blue);
+  border: 4px solid var(--apple-bg);
+  box-shadow: 0 0 0 2px rgba(0,102,204,0.16);
+  z-index: 2;
+}
+
+/* remove broken segment lines */
+.tl-item::before {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .timeline::before { left: 10px; }
+  .tl-dot { left: 10px; }
+}
+
+</style>
 </head>
 <body>
 <div class="lightbox-overlay" id="lightbox" aria-hidden="true">
@@ -646,7 +691,7 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#publications">Publications</a></li>
-    <li><a href="#international">International</a></li>
+    <li><a href="#international">International Experience</a></li>
   </ul>
 </nav>
 
@@ -743,7 +788,20 @@
           <p class="tl-company">Qualcomm Semiconductor Corporation · Hsinchu, Taiwan</p>
           <ul>
             <li>Architected a scalable Multi-Agent AI platform using MCP to unify natural language inputs, GB-scale EDA logs, and binary waveform data into an automated debugging ecosystem.</li>
-            <li>Developed a production-grade Waveform &amp; EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.</li>
+            <li>Developed a production-grade Waveform &amp; EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
+
+  <!-- ✅ Embedded Architecture Diagram -->
+  <details style="margin-top:16px;">
+    <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;font-size:0.9rem;">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
+
+    <div style="margin-top:12px;">
+      <a href="jpg/LLM_system_overall.jpg" target="_blank">
+        <img src="jpg/LLM_system_overall.jpg"
+             alt="Multi-Agent AI + MCP + EDA system architecture"
+             style="width:100%;max-width:580px;border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,0.08);">
+      </a>
+    </div>
+  </details></li>
             <li>Engineered a closed-loop Self-Correction mechanism tracking background Linux subprocess stdout errors, achieving 100% execution success rate with 2–3 second auto-debug cycles.</li>
             <li>Designed enterprise security guardrails by isolating AWS IAM roles within local MCP servers, ensuring 100% corporate security compliance and preventing LLM exposure to credentials.</li>
             <li>Analyzed large-scale test datasets with NYCU lab to identify abnormal design behavior and systematic failure patterns related to DFT, MBIST, and ATPG diagnosis.</li>
@@ -802,6 +860,22 @@
       </div>
 
     </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <span class="tl-role">TSMC Internship — F6 Manufacturing Information Technology Department</span>
+            <span class="tl-date">Jul 2019 – Aug 2019</span>
+          </div>
+          <p class="tl-company">Taiwan Semiconductor Manufacturing Company (TSMC) · Taiwan</p>
+          <ul>
+            <li>Analyzed data from the Tool Productivity Mining System to identify key manufacturing parameter patterns affecting equipment performance.</li>
+            <li>Developed an automated alerting system that recommended optimal process parameters to improve productivity monitoring efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
   </section>
 
   <!-- ─── EDUCATION ─────────────────────────────────── -->
@@ -822,9 +896,9 @@
             <li>Coursework: Artificial Neural Networks (A+), Big Data Systems (A+)</li>
           </ul>
           <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="avif/2019_IEEE_SMC_Presentation_edited.avif" target="_blank" rel="noopener"
+            <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener"
                style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
-              <img src="avif/2019_IEEE_SMC_Presentation_edited.avif" alt="IEEE SMC 2019 Presentation in Bari, Italy"
+              <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy"
                    style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
             </a>
             <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
@@ -833,9 +907,9 @@
             </p>
           </div>
           <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="avif/NTU_graduation_president_lee_conferring.avif" target="_blank" rel="noopener"
+            <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener"
                style="display:block;border-radius:8px;overflow:hidden;border:1px solid var(--border);flex-shrink:0;transition:transform .2s,box-shadow .2s;">
-              <img src="avif/NTU_graduation_president_lee_conferring.avif" alt="NTU Graduation Ceremony 2019"
+              <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019"
                    style="height:150px;width:auto;max-width:240px;object-fit:cover;display:block;" />
             </a>
             <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
@@ -850,12 +924,17 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">Exchange Student</span>
+            
+<span class="tl-role">Exchange Student</span>
             <span class="tl-date">Aug 2018 – Feb 2019</span>
           </div>
           <p class="tl-company">Katholieke Universiteit Leuven · Leuven, Belgium</p>
           <ul>
-            <li>Coursework and collaboration conducted entirely in English with European engineers and scientists.</li>
+            <li><strong>Selected as International Scholar:</strong> Awarded a highly competitive, full academic scholarship by KU Leuven (#1 in Belgium). The merit-based sponsorship fully covered tuition, a EUR 900/month stipend, and travel grants.</li>
+            <li><strong>Rapid Software Upskilling:</strong> Leveraged a rigorous scientific environment (Faculty of Science) to master Java. Independently architected, developed, and deployed a GUI-based puzzle game for the final project (source code on GitHub).</li>
+            <li><strong>Global Network &amp; Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
+            <li><strong>Cross-Border Resilience:</strong> Demonstrated exceptional time management and adaptability by navigating complex logistics, traveling to over 20 cities across 10 European countries within a 6-month period.</li>
+
           </ul>
         </div>
       </div>
@@ -1005,51 +1084,44 @@
     </div>
 
     <div class="pub-list">
-<div class="pub-card">
-  <span class="pub-badge award">Nature Citation</span>
-  <div>
-    <p class="pub-title">
-      <a href="https://ieeexplore.ieee.org/abstract/document/8914048"
-         target="_blank"
-         rel="noopener noreferrer"
-         title="https://ieeexplore.ieee.org/abstract/document/8914048">
-        Deep Learning-based Microscopy Segmentation
-      </a>
-    </p>
-
-    <p class="pub-authors">
-      <strong>Shuo-Wen Chang</strong> (First author)
-    </p>
-
-    <div class="pub-venue">
-      <em>IEEE International Conference on Systems, Man, and Cybernetics (SMC)</em>
-      <span>· 2019</span>
-      <span class="pub-cite">📖 Master Thesis Work</span>
-    </div>
-
-    <details style="margin-top:10px;">
-      <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;">
-        Cited by Nature Machine Intelligence
-      </summary>
-
-      <div style="margin-top:8px;">
-        <p style="font-size:0.85rem;">
-          Referenced in
-          <a href="https://www.nature.com/articles/s42256-021-00420-0"
-             target="_blank"
-             rel="noopener noreferrer"
-             title="https://www.nature.com/articles/s42256-021-00420-0"
-             style="color:var(--teal);font-weight:600;text-decoration:none;">
-            Nature Machine Intelligence article
-          </a>
-        </p>
-
-        <img src="jpg/citation_by_nature.jpg"
-             style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;">
+      <div class="pub-card">
+        <span class="pub-badge award">Nature Citation</span>
+        <div>
+          <p class="pub-title">
+            <a href="https://ieeexplore.ieee.org/abstract/document/8914048"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="https://ieeexplore.ieee.org/abstract/document/8914048">
+              Deep Learning-based Microscopy Segmentation
+            </a>
+          </p>
+          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> (First author)</p>
+          <div class="pub-venue">
+            <em>IEEE International Conference on Systems, Man, and Cybernetics (SMC)</em>
+            <span>· 2019</span>
+            <span class="pub-cite">📖 Master Thesis Work</span>
+          </div>
+          <details style="margin-top:10px;">
+            <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;">Cited by Nature Machine Intelligence</summary>
+            <div style="margin-top:8px;">
+              <p style="font-size:0.85rem;">
+                Referenced in
+                <a href="https://www.nature.com/articles/s42256-021-00420-0"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   title="https://www.nature.com/articles/s42256-021-00420-0"
+                   style="color:var(--teal);font-weight:600;text-decoration:none;">
+                  Nature Machine Intelligence article
+                </a>
+              </p>
+              <img src="jpg/citation_by_nature.jpg"
+                   alt="Nature Machine Intelligence citation screenshot"
+                   style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(0,0,0,0.06);">
+            </div>
+          </details>
+        </div>
       </div>
-    </details>
-  </div>
-</div>
+
 
       <!-- IEEE VTS 2023 -->
       <div class="pub-card">
