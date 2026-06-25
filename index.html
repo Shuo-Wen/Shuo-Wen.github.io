@@ -12,13 +12,6 @@
       --apple-blue: #0066cc;
       --apple-card: #ffffff;
       --apple-accent: #22c5b0;
-      --navy: #1d1d1f;
-      --teal: #0066cc;
-      --accent: #22c5b0;
-      --light: #f5f5f7;
-      --muted: #86868b;
-      --white: #ffffff;
-      --card: #ffffff;
       --border: #e8e8ed;
     }
 
@@ -310,12 +303,42 @@
       top: 3px;
     }
 
-    /* ─── AWARDS ──────────────────────────────────── */
-    .awards-list { display: flex; flex-direction: column; gap: 18px; }
-    .award-card { padding: 24px 26px; font-size: .93rem; }
-    .award-card .award-title { font-weight: 800; letter-spacing: -0.01em; }
-    .award-card .award-meta { color: var(--apple-sub); font-size: .84rem; margin-top: 4px; }
-    
+    /* ─── MODERN DETAILS & AWARDS STYLE ───────────── */
+    .modern-details {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    .modern-summary-trigger {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--apple-blue);
+      cursor: pointer;
+      list-style: none; /* 隱藏 Safari/Chrome 預設箭頭 */
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .modern-summary-trigger::-webkit-details-marker {
+      display: none; /* 隱藏舊版 Webkit 箭頭 */
+    }
+    .modern-summary-trigger::before {
+      content: '⊕';
+      font-size: 1.05rem;
+      transition: transform 0.2s ease;
+    }
+    .modern-details[open] .modern-summary-trigger::before {
+      content: '⊖';
+    }
+    .modern-details-content {
+      animation: fadeInSlide 0.3s ease-out forwards;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── IMAGES & PHOTO WRAPPER ─────────────────── */
     .award-photos {
       display: flex;
       flex-wrap: wrap;
@@ -560,7 +583,7 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#publications">Publications</a></li>
-    <li><a href="#international">International Experience</a></li>
+    <li><a href="#international">International</a></li>
   </ul>
 </nav>
 
@@ -701,7 +724,7 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">TSMC Internship — F6 Manufacturing Information Technology Department</span>
+            <span class="tl-role">TSMC Internship — F6 Manufacturing IT</span>
             <span class="tl-date">Jul 2019 – Aug 2019</span>
           </div>
           <p class="tl-company">Taiwan Semiconductor Manufacturing Company (TSMC) · Tainan, Taiwan</p>
@@ -735,7 +758,7 @@
             <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener">
               <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy" />
             </a>
-            <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
+            <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               My thesis was presented on 9th Oct 2019 in Bari, Italy. I was invited to serve as the co-chair of my session: <em>Image Processing / Pattern Recognition (II)</em>.
             </p>
           </div>
@@ -743,7 +766,7 @@
             <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener">
               <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019" />
             </a>
-            <p style="font-size:.88rem;color:var(--navy);line-height:1.6;max-width:420px;padding-top:4px;">
+            <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               The former president of NTU and IEEE Fellow, Prof. Si-Chen Lee, presenting the student representative award at the 2019 EECS graduation ceremony.
             </p>
           </div>
@@ -785,7 +808,7 @@
     </div>
   </section>
 
-<section id="awards">
+  <section id="awards">
     <h2 class="section-title">Awards & Recognition</h2>
     <div class="awards-list">
 
@@ -797,7 +820,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
                   <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
                 </a>
@@ -821,7 +844,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
                   <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
                 </a>
@@ -839,7 +862,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
                   <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
                 </a>
@@ -863,7 +886,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
                   <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
                 </a>
@@ -884,25 +907,25 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper" style="align-items:flex-start;">
+              <div class="award-photos" style="align-items:flex-start;">
                 <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
                   <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
                     <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" />
                   </a>
-                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">1st-round qualifying pass</p>
+                  <p style="font-size:.78rem;color:var(--apple-sub);max-width:220px;">1st-round qualifying pass</p>
                 </div>
                 <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
                   <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
                     <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Finals — 2nd Place certificate" />
                   </a>
-                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">National Finals — 2nd Place Certificate</p>
+                  <p style="font-size:.78rem;color:var(--apple-sub);max-width:220px;">National Finals — 2nd Place Certificate</p>
                 </div>
               </div>
             </div>
           </div>
         </details>
-        <p style="font-size:.85rem;color:var(--navy);margin-top:12px;line-height:1.6;">
-          Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;text-decoration:none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
+        <p style="font-size:.85rem;color:var(--apple-text);margin-top:12px;line-height:1.6;">
+          Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--apple-blue);font-weight:600;text-decoration:none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
         </p>
       </div>
 
@@ -914,7 +937,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
                   <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
                 </a>
@@ -938,7 +961,7 @@
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
             <div class="modern-details-inner">
-              <div class="award-photos architecture-wrapper">
+              <div class="award-photos">
                 <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
                   <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" />
                 </a>
@@ -982,7 +1005,7 @@
             <div style="margin-top:8px;">
               <p style="font-size:0.85rem;">
                 Referenced in
-                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--teal);font-weight:600;text-decoration:none;">
+                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--apple-blue);font-weight:600;text-decoration:none;">
                   Nature Machine Intelligence article
                 </a>
               </p>
@@ -1043,9 +1066,9 @@
 
 <footer>
   <p>Kevin (Shuo-Wen) Chang  · 
-    <a href="mailto:changshuowen@gmail.com" style="color:var(--teal);text-decoration:none;">changshuowen@gmail.com</a>
+    <a href="mailto:changshuowen@gmail.com" style="color:var(--apple-blue);text-decoration:none;">changshuowen@gmail.com</a>
      · 
-    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--apple-blue);text-decoration:none;">LinkedIn</a>
   </p>
 </footer>
 
