@@ -310,98 +310,6 @@
       top: 3px;
     }
 
-    /* ─── MODERN ELEGANT DETAILED EXPAND (MODIFIED) ─── */
-    .modern-details {
-      margin-top: 16px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: transparent;
-    }
-    
-    /* 隱藏原生 details 箭頭（跨瀏覽器支援） */
-    .modern-details summary::-webkit-details-marker { display: none; }
-    .modern-details summary { list-style: none; }
-    
-    .modern-summary-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      color: var(--apple-sub);
-      font-weight: 600;
-      font-size: 0.9rem;
-      user-select: none;
-      padding: 4px 0;
-      transition: color 0.25s ease;
-    }
-    
-    /* 懸停與啟用狀態的顏色變化 */
-    .modern-summary-trigger:hover,
-    .modern-details[open] .modern-summary-trigger {
-      color: var(--apple-blue);
-    }
-    
-    /* 精緻的客製化 Chevron 箭頭 */
-    .modern-summary-trigger::before {
-      content: '';
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(-45deg); /* 預設指向右側 */
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-left: 2px;
-    }
-    
-    /* 當展開時，箭頭流暢順時針旋轉向下 */
-    .modern-details[open] .modern-summary-trigger::before {
-      transform: rotate(45deg);
-    }
-
-    /* 利用 CSS Grid 實作完美的純 CSS 平滑下滑折疊動畫 */
-    .modern-details-content {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .modern-details[open] .modern-details-content {
-      grid-template-rows: 1fr;
-    }
-    .modern-details-inner {
-      overflow: hidden;
-      /* 左側點綴淡雅的層級導引線與留白縮排 */
-      margin-left: 4px;
-      padding-left: 16px;
-      border-left: 2px solid var(--border);
-    }
-    
-    /* 圖片容器與淡入微幅位移動畫 */
-    .architecture-wrapper {
-      padding: 14px 0 6px;
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      transition-delay: 0.05s;
-    }
-    .modern-details[open] .architecture-wrapper {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .architecture-img {
-      width: 100%;
-      max-width: 580px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      display: block;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .architecture-img:hover {
-      transform: scale(1.008);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.1);
-    }
-
     /* ─── AWARDS ──────────────────────────────────── */
     .awards-list { display: flex; flex-direction: column; gap: 18px; }
     .award-card { padding: 24px 26px; font-size: .93rem; }
@@ -723,20 +631,14 @@
           <ul>
             <li>Architected a scalable Multi-Agent AI platform using MCP to unify natural language inputs, GB-scale EDA logs, and binary waveform data into an automated debugging ecosystem.</li>
             <li>Developed a production-grade Waveform & EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
-              
-              <details class="modern-details">
-                <summary class="modern-summary-trigger">System architecture (LLM + MCP + EDA integration)</summary>
-                <div class="modern-details-content">
-                  <div class="modern-details-inner">
-                    <div class="architecture-wrapper">
-                      <a href="jpg/LLM_system_overall.jpg" target="_blank">
-                        <img src="jpg/LLM_system_overall.jpg" alt="Multi-Agent AI + MCP + EDA system architecture" class="architecture-img">
-                      </a>
-                    </div>
-                  </div>
+              <details style="margin-top:16px;">
+                <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;font-size:0.9rem;">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
+                <div style="margin-top:12px;">
+                  <a href="jpg/LLM_system_overall.jpg" target="_blank">
+                    <img src="jpg/LLM_system_overall.jpg" alt="Multi-Agent AI + MCP + EDA system architecture" style="width:100%;max-width:580px;border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,0.08);">
+                  </a>
                 </div>
               </details>
-              
             </li>
             <li>Engineered a closed-loop Self-Correction mechanism tracking background Linux subprocess stdout errors, achieving 100% execution success rate with 2–3 second auto-debug cycles.</li>
             <li>Designed enterprise security guardrails by isolating AWS IAM roles within local MCP servers, ensuring 100% corporate security compliance and preventing LLM exposure to credentials.</li>
@@ -883,82 +785,122 @@
     </div>
   </section>
 
-  <section id="awards">
+<section id="awards">
     <h2 class="section-title">Awards & Recognition</h2>
     <div class="awards-list">
 
       <div class="award-card">
         <p class="award-title">NTU Outstanding Student Award</p>
         <p class="award-meta">National Taiwan University · 2019  |  Only 13 recipients university-wide</p>
-        <div class="award-photos">
-          <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
-            <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
-          </a>
-          <a href="avif/NTU_outstanding_youth_with_president.avif" target="_blank" rel="noopener">
-            <img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" />
-          </a>
-          <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
-            <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
+                  <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
+                </a>
+                <a href="avif/NTU_outstanding_youth_with_president.avif" target="_blank" rel="noopener">
+                  <img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" />
+                </a>
+                <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="award-card">
         <p class="award-title">NTU Outstanding Achievement Award — EECS</p>
         <p class="award-meta">National Taiwan University · 2018  |  Only 1 recipient in the entire EECS college</p>
-        <div class="award-photos">
-          <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
-            <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="award-card">
         <p class="award-title">NTU Altruistic Award</p>
         <p class="award-meta">National Taiwan University  |  Awarded for outstanding contributions to the community</p>
-        <div class="award-photos">
-          <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
-            <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
-          </a>
-          <a href="jpg/Alutric_award.jpg" target="_blank" rel="noopener">
-            <img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" />
-          </a>
-          <a href="jpg/Alutric_award_cerf.jpg" target="_blank" rel="noopener">
-            <img src="jpg/Alutric_award_cerf.jpg" alt="NTU Altruistic Award — Certificate of Altruistic Award" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
+                  <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
+                </a>
+                <a href="jpg/Alutric_award.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" />
+                </a>
+                <a href="jpg/Alutric_award_cerf.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/Alutric_award_cerf.jpg" alt="NTU Altruistic Award — Certificate of Altruistic Award" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="award-card">
         <p class="award-title">IEEE VTS Best Paper Award</p>
         <p class="award-meta">International · 2023  |  Presented Nov 2024  |  3rd author</p>
-        <div class="award-photos">
-          <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
-            <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
-          </a>
-          <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg" target="_blank" rel="noopener">
-            <img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
+                </a>
+                <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="award-card">
         <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
         <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
-        <div class="award-photos" style="align-items:flex-start;">
-          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
-            <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
-              <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" />
-            </a>
-            <p style="font-size:.78rem;color:var(--muted);max-width:220px;">1st-round qualifying pass</p>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper" style="align-items:flex-start;">
+                <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+                  <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
+                    <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" />
+                  </a>
+                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">1st-round qualifying pass</p>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+                  <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
+                    <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Final — 2nd Place certificate" />
+                  </a>
+                  <p style="font-size:.78rem;color:var(--muted);max-width:220px;">National Final — 2nd place certificate</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
-            <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
-              <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Final — 2nd Place certificate" />
-            </a>
-            <p style="font-size:.78rem;color:var(--muted);max-width:220px;">National Final — 2nd place certificate</p>
-          </div>
-        </div>
+        </details>
         <p style="font-size:.85rem;color:var(--navy);margin-top:12px;line-height:1.6;">
           Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;text-decoration:none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
         </p>
@@ -967,27 +909,43 @@
       <div class="award-card">
         <p class="award-title">Future Finance & Healthcare Hackathon</p>
         <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
-        <div class="award-photos">
-          <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
-            <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
-          </a>
-          <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
-            <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
-          </a>
-          <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
-            <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
+                  <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
+                </a>
+                <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
+                </a>
+                <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
+                  <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="award-card">
         <p class="award-title">Ministry of Education Full Scholarship</p>
         <p class="award-meta">Taiwan Government · 4-year award for rank 1/59 undergraduate</p>
-        <div class="award-photos">
-          <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
-            <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" />
-          </a>
-        </div>
+        
+        <details class="modern-details">
+          <summary class="modern-summary-trigger">View Award Photos</summary>
+          <div class="modern-details-content">
+            <div class="modern-details-inner">
+              <div class="award-photos architecture-wrapper">
+                <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
+                  <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
     </div>
@@ -1006,7 +964,7 @@
 
     <div class="pub-list">
       <div class="pub-card">
-        <span class="pub-badge award">Nature Citation</span>
+        <span class="pub-badge" style="background: #00875a;">Nature Citation</span>
         <div>
           <p class="pub-title">
             <a href="https://ieeexplore.ieee.org/abstract/document/8914048" target="_blank" rel="noopener noreferrer" title="https://ieeexplore.ieee.org/abstract/document/8914048">
@@ -1019,24 +977,18 @@
             <span>· 2019</span>
             <span class="pub-cite">📖 Master Thesis Work</span>
           </div>
-          
-          <details class="modern-details" style="margin-top:10px;">
-            <summary class="modern-summary-trigger">Cited by Nature Machine Intelligence</summary>
-            <div class="modern-details-content">
-              <div class="modern-details-inner" style="padding-left:12px; margin-left: 2px;">
-                <div class="architecture-wrapper" style="padding-top:10px;">
-                  <p style="font-size:0.85rem; margin-bottom: 6px;">
-                    Referenced in
-                    <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--teal);font-weight:600;text-decoration:none;">
-                      Nature Machine Intelligence article
-                    </a>
-                  </p>
-                  <img src="jpg/citation_by_nature.jpg" alt="Nature Machine Intelligence citation screenshot" class="architecture-img">
-                </div>
-              </div>
+          <details style="margin-top:10px;">
+            <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;">Cited by Nature Machine Intelligence</summary>
+            <div style="margin-top:8px;">
+              <p style="font-size:0.85rem;">
+                Referenced in
+                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--teal);font-weight:600;text-decoration:none;">
+                  Nature Machine Intelligence article
+                </a>
+              </p>
+              <img src="jpg/citation_by_nature.jpg" alt="Nature Machine Intelligence citation screenshot" style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(0,0,0,0.06);">
             </div>
           </details>
-          
         </div>
       </div>
 
@@ -1157,7 +1109,7 @@
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
 
-  document.querySelectorAll('.award-photos a, #education a, .architecture-wrapper a').forEach(anchor => {
+  document.querySelectorAll('.award-photos a, #education a').forEach(anchor => {
     const img = anchor.querySelector('img');
     if (!img || !lightbox || !lightboxImg) return;
 
