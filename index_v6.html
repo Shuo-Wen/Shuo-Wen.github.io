@@ -13,6 +13,8 @@
       --apple-card: #ffffff;
       --apple-accent: #22c5b0;
       --border: #e8e8ed;
+      --radius-lg: 24px;
+      --radius-md: 16px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,43 +36,39 @@
       border-bottom: 1px solid var(--border);
     }
     
-    /* Bento 英雄區塊主容器 */
     .hero-bento-container {
       max-width: 980px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 2fr 1fr; /* 左側文字 2/3，右側 Lookbook 卡片 1/3 */
+      grid-template-columns: 2fr 1fr;
       gap: 24px;
       align-items: stretch;
     }
 
-    /* 左側文字資訊卡片 */
     .hero-text-card {
       background: var(--apple-card);
       border: 1px solid rgba(0,0,0,0.035);
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       padding: 40px;
-      text-align: left;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02), inset 0 1px 0 0 rgba(255,255,255,0.6);
     }
 
     .hero-profile-meta {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       margin-bottom: 24px;
     }
 
     .avatar {
-      width: 84px;
-      height: 84px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      margin: 0; /* 取消原本的置中 */
       flex-shrink: 0;
     }
 
@@ -93,16 +91,16 @@
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start; /* 改為左對齊 */
+      justify-content: flex-start;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 12px;
     }
     
     .contact-links a {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: var(--apple-bg); /* 改用淺灰底按鈕與白色卡片形成層次 */
+      gap: 8px;
+      background: var(--apple-bg);
       border: 1px solid var(--border);
       color: var(--apple-text);
       text-decoration: none;
@@ -110,83 +108,44 @@
       border-radius: 999px;
       font-size: .85rem;
       font-weight: 500;
-      transition: transform .22s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
     }
     
     .contact-links a:hover {
       background: #e8e8ed;
-      transform: translateY(-1px) scale(1.015);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
     }
-    .contact-links a svg { flex-shrink: 0; }
 
     .contact-links a[download] {
       background: var(--apple-blue);
       color: var(--apple-card);
       border-color: var(--apple-blue);
       font-weight: 600;
-      box-shadow: 0 6px 18px rgba(0, 102, 204, 0.12);
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
     }
     
     .contact-links a[download]:hover {
-      background: #0077ed;
-      border-color: #0077ed;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 10px 24px rgba(0, 102, 204, 0.2);
+      background: #0055b3;
+      border-color: #0055b3;
+      box-shadow: 0 6px 16px rgba(0, 102, 204, 0.25);
     }
 
-    /* 右側 Bento 垂直排版容器 */
-    .hero-right-bento {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* 右側雜誌封面感滿版區塊卡片 (Lookbook Style) */
     .hero-lookbook-card {
       position: relative;
       background-image: url('jpg/casual_pic.jpg');
       background-size: cover;
       background-position: center;
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       border: 1px solid rgba(0,0,0,0.04);
-      box-shadow: 
-        0 12px 36px rgba(0,0,0,0.06), 
-        inset 0 0 20px rgba(0,0,0,0.03); /* 細微內陰影 */
-      flex: 1; /* 彈性填滿容器高度 */
+      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
       min-height: 340px;
       overflow: hidden;
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
     }
 
-    /* Lookbook 卡片的 Apple 風格微光邊緣高光效果 */
-    .hero-lookbook-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      border-radius: 24px;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,0.25);
-      pointer-events: none;
-    }
-
     .hero-lookbook-card:hover {
       transform: translateY(-4px) scale(1.01);
-      box-shadow: 
-        0 20px 48px rgba(0,0,0,0.12), 
-        inset 0 0 24px rgba(0,0,0,0.02);
-    }
-
-    /* Manifesto Slogan 樣式 (座右銘/圖說) */
-    .hero-manifesto-slogan {
-      font-size: 0.88rem;
-      font-style: italic;
-      color: #555555;
-      line-height: 1.5;
-      text-align: center;
-      font-weight: 500;
-      padding: 0 8px;
-      max-width: 95%;
-      margin: 4px auto 0;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.12);
     }
 
     /* ─── FLOATING GLASS NAV ──────────────────────── */
@@ -211,15 +170,15 @@
     .sticky-nav ul::-webkit-scrollbar { display: none; }
     .sticky-nav ul li a {
       display: block;
-      padding: 15px 16px;
-      font-size: .78rem;
+      padding: 16px 20px;
+      font-size: .85rem;
       font-weight: 500;
       color: var(--apple-text);
-      opacity: .72;
+      opacity: .6;
       text-decoration: none;
       white-space: nowrap;
       border-bottom: 2px solid transparent;
-      transition: opacity .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+      transition: opacity .2s ease, color .2s ease, border-color .2s ease;
     }
     .sticky-nav ul li a:hover,
     .sticky-nav ul li a.active {
@@ -228,25 +187,24 @@
       border-bottom-color: var(--apple-blue);
     }
 
-    /* ─── LAYOUT ──────────────────────────────────── */
+    /* ─── LAYOUT & CARDS ──────────────────────────────────── */
     main {
       max-width: 980px;
       margin: 0 auto;
       padding: 64px 24px 104px;
     }
     section {
-      margin-bottom: 76px;
+      margin-bottom: 80px;
       scroll-margin-top: 84px;
     }
     .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.35rem);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
       letter-spacing: -0.035em;
       color: var(--apple-text);
       margin-bottom: 28px;
     }
 
-    /* ─── APPLE CARDS / MICRO-INTERACTIONS ────────── */
     .summary-card,
     .tl-card,
     .award-card,
@@ -254,10 +212,10 @@
     .skill-group,
     .intl-pill {
       background: var(--apple-card);
-      border: 1px solid rgba(0,0,0,0.035);
-      border-radius: 22px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.025);
-      transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
     }
     .summary-card:hover,
     .tl-card:hover,
@@ -265,56 +223,42 @@
     .pub-card:hover,
     .skill-group:hover,
     .intl-pill:hover {
-      transform: translateY(-3px) scale(1.006);
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.055);
-      border-color: rgba(0, 102, 204, 0.16);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.045);
     }
 
-    .summary-card {
-      padding: 32px;
-      font-size: 1rem;
-      color: #2d2d32;
-    }
+    .summary-card { padding: 36px; font-size: 1rem; color: #2d2d32; }
     .summary-card p + p { margin-top: 14px; }
 
-    /* ─── SKILLS AS BENTO GRID ────────────────────── */
+    /* ─── SKILLS BENTO GRID ────────────────────── */
     .skill-groups {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    .skill-group {
-      padding: 24px;
-      min-height: 148px;
-    }
+    .skill-group { padding: 24px; }
     .skill-group h4 {
-      font-size: .88rem;
+      font-size: .85rem;
       font-weight: 700;
-      letter-spacing: -0.005em;
       color: var(--apple-sub);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
     .badge {
       background: var(--apple-bg);
-      border: 1px solid transparent;
       color: var(--apple-text);
       font-size: .82rem;
       font-weight: 600;
-      padding: 6px 13px;
-      border-radius: 10px;
-      cursor: default;
-      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background .2s, color .2s, transform .2s;
     }
     .badge:hover {
       background: var(--apple-blue);
-      color: var(--apple-card);
-      border-color: var(--apple-blue);
-      transform: scale(1.045);
+      color: #fff;
+      transform: scale(1.03);
     }
 
     /* ─── TIMELINE ────────────────────────────────── */
@@ -322,394 +266,184 @@
     .timeline::before {
       content: '';
       position: absolute;
-      left: 16px;
-      top: 12px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(#d8e3ea, rgba(216,227,234,0.15));
-      z-index: 0;
+      left: 16px; top: 12px; bottom: 0; width: 2px;
+      background: linear-gradient(#d8e3ea, rgba(216,227,234,0.1));
     }
-    .tl-item {
-      position: relative;
-      padding-left: 48px;
-      margin-bottom: 30px;
-    }
+    .tl-item { position: relative; padding-left: 48px; margin-bottom: 32px; }
     .tl-dot {
-      position: absolute;
-      left: 16px;
-      transform: translateX(-50%);
-      top: 12px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--apple-blue);
-      border: 4px solid var(--apple-bg);
-      box-shadow: 0 0 0 2px rgba(0,102,204,0.16);
-      z-index: 2;
+      position: absolute; left: 16px; top: 12px; transform: translateX(-50%);
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--apple-blue); border: 3px solid var(--apple-bg);
+      box-shadow: 0 0 0 2px rgba(0,102,204,0.15);
     }
-    .tl-card { padding: 28px 30px; }
+    .tl-card { padding: 32px; }
     .tl-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: flex-start; gap: 12px; margin-bottom: 8px;
     }
-    .tl-role {
-      font-weight: 800;
-      font-size: 1.03rem;
-      letter-spacing: -0.01em;
-    }
+    .tl-role { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; }
     .tl-date {
-      font-size: .82rem;
-      color: var(--apple-sub);
-      white-space: nowrap;
-      background: var(--apple-bg);
-      padding: 4px 11px;
-      border-radius: 999px;
+      font-size: .8rem; color: var(--apple-sub); background: var(--apple-bg);
+      padding: 4px 12px; border-radius: 999px; font-weight: 500;
     }
-    .tl-company {
-      font-size: .92rem;
-      color: var(--apple-blue);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-    .tl-card ul { list-style: none; padding: 0; }
+    .tl-company { color: var(--apple-blue); font-weight: 600; margin-bottom: 16px; font-size: 0.95rem; }
+    .tl-card ul { list-style: none; }
     .tl-card li {
-      font-size: .92rem;
-      padding: 5px 0 5px 17px;
-      position: relative;
-      color: #33343a;
+      font-size: .95rem; padding: 6px 0 6px 20px; position: relative; color: #33343a;
     }
     .tl-card li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--apple-blue);
-      font-weight: 800;
-      top: 3px;
+      content: '•'; position: absolute; left: 4px; color: var(--apple-blue); font-weight: bold;
     }
 
-    /* ─── AWARDS SECTION OPTIMIZATION (FLEXBOX EVOLUTION) ─── */
-    .awards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px; /* 卡片與卡片之間的呼吸間距 */
-    }
-
+    /* ─── AWARDS SECTION (FLEX FLEX-WRAP FIXES) ─── */
+    .awards-list { display: flex; flex-direction: column; gap: 20px; }
     .award-card { 
-      background: var(--apple-card); 
-      border: 1px solid var(--border); 
-      border-radius: 12px; 
-      padding: 22px 26px; /* 高級寬敞內距，根除死黏邊框的窒息感 */
-      box-sizing: border-box;
-
-      /* 核心：將卡片設為橫向 Flexbox 佈局，左右對齊並垂直居中 */
+      padding: 24px 32px;
       display: flex; 
-      flex-direction: row; 
+      flex-wrap: wrap; /* 核心修正：允許子元素在必要時向下折行 */
       justify-content: space-between; 
       align-items: center; 
-      gap: 24px; 
-      flex-wrap: wrap; /* 確保在小螢幕時能優雅換行 */
+      gap: 20px; 
     }
 
-    /* 文字包裹外殼：強迫它往左邊靠並佔滿剩餘寬度 */
-    .award-info {
-      flex: 1;
-      min-width: 260px; /* 建立安全換行臨界點 */
-    }
+    .award-info { flex: 1; min-width: 280px; }
+    .award-title { font-weight: 700; font-size: 1.1rem; color: var(--apple-text); margin-bottom: 4px; }
+    .award-meta { font-size: .88rem; color: var(--apple-sub); }
 
-    .award-title {
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.01em;
-      color: var(--apple-text);
-      margin-top: 0;
-      margin-bottom: 6px; /* 與 Meta 拉開輕微距離 */
-    }
-
-    .award-meta {
-      font-size: .86rem;
-      color: var(--apple-sub);
-      margin: 0; /* 移除自然邊距以免撐壞雙欄高度 */
-    }
-
-    /* ─── MODERN DETAILS & AWARDS STYLE ───────────── */
-    .modern-details {
-      /* 關鍵修正：在雙欄佈局下，收納盒在外面時不需要 margin-top 和 border-top */
-      margin: 0; 
-      flex-shrink: 0; /* 保護按鈕，不被大段文字壓扁變形 */
-    }
-
+    /* ─── MODERN DETAILS BOX & ANIMATION ───────────── */
+    .modern-details { flex-shrink: 0; }
     .modern-summary-trigger {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--apple-blue);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px; /* 幫按鈕增加點擊熱區感 */
-      background: rgba(0, 102, 204, 0.05); /* 微弱的 Apple Blue 莫蘭迪底色 */
-      border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600; color: var(--apple-blue);
+      cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;
+      padding: 8px 16px; background: rgba(0, 102, 204, 0.05); border-radius: 8px;
       transition: background 0.2s ease;
     }
+    .modern-summary-trigger:hover { background: rgba(0, 102, 204, 0.1); }
+    
+    /* 移除原生小箭頭 */
+    .modern-summary-trigger::-webkit-details-marker,
+    .modern-summary-trigger::marker { display: none; }
+    .modern-summary-trigger::before { content: '⊕'; font-size: 1rem; }
+    .modern-details[open] .modern-summary-trigger::before { content: '⊖'; }
 
-    .modern-summary-trigger:hover {
-      background: rgba(0, 102, 204, 0.1); /* 滑鼠懸停微亮反饋 */
-    }
-
-    .modern-summary-trigger::-webkit-details-marker {
-      display: none;
-    }
-
-    .modern-summary-trigger::before {
-      content: '⊕';
-      font-size: 1.05rem;
-      transition: transform 0.2s ease;
-    }
-
-    .modern-details[open] .modern-summary-trigger::before {
-      content: '⊖';
-    }
-
-    /* 當摺疊盒被打開時，強迫內部的照片區塊橫跨 100% 寬度，乖乖出現在卡片正下方 */
+    /* 修正關鍵：強迫被展開的內容獨佔 100% 寬度，自動擠到下方 */
     .modern-details-content {
       width: 100%;
-      flex-basis: 100%;
-      animation: fadeInSlide 0.3s ease-out forwards;
+      flex-basis: 100%; 
+      animation: fadeInSlide 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
-
-    /* 照片內容內距：展開後與灰色色塊內部保持美觀留白 */
     .modern-details-inner {
-      padding-top: 16px;
-      margin-top: 14px;
-      border-top: 1px solid var(--border); /* 將原本在按鈕上方的分開線，移到展開後的內容上方 */
+      padding-top: 20px; margin-top: 16px; border-top: 1px solid var(--border);
     }
 
     @keyframes fadeInSlide {
-      from { opacity: 0; transform: translateY(-6px); }
+      from { opacity: 0; transform: translateY(-8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── 響應式：手機版完美優化 ─── */
-    @media (max-width: 640px) {
-      .award-card {
-        flex-direction: column; /* 手機版自動切換回原本的上下排列 */
-        align-items: flex-start;
-        gap: 12px;
-        padding: 18px 20px;
-      }
-      .award-info {
-        width: 100%;
-        min-width: 0;
-      }
-      .modern-summary-trigger {
-        width: fit-content; /* 按鈕不強行撐滿，保持精緻尺寸 */
-      }
-    }
-
-    /* ─── IMAGES & PHOTO WRAPPER ─────────────────── */
-    .award-photos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
+    .award-photos { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
     .award-photos a {
-      display: block;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-      background: #fff;
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      display: block; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); transition: transform .2s, box-shadow .2s;
     }
     .award-photos a:hover {
-      transform: scale(1.025);
-      box-shadow: 0 12px 32px rgba(0,0,0,.075);
-      border-color: rgba(0,102,204,0.22);
+      transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
-    .award-photos img {
-      height: 140px;
-      width: auto;
-      max-width: 225px;
-      object-fit: cover;
-      display: block;
-      cursor: zoom-in;
-      transition: transform .22s ease, filter .22s ease;
-    }
-    .award-photos a:hover img {
-      filter: saturate(1.04);
-    }
-    .no-rotate-fix {
-      width: 210px !important;
-      height: 140px !important;
-      max-width: 210px !important;
-      object-fit: contain !important;
-      background: #fff;
-    }
+    .award-photos img { height: 130px; width: auto; object-fit: cover; display: block; cursor: zoom-in; }
 
     /* ─── PUBLICATIONS ────────────────────────────── */
     .pub-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 28px;
     }
     .pub-header .section-title { margin-bottom: 0; }
     .scholar-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--apple-blue);
-      color: var(--apple-card);
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: .86rem;
-      font-weight: 700;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-      white-space: nowrap;
-      box-shadow: 0 8px 22px rgba(0,102,204,0.16);
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--apple-blue); color: #fff; text-decoration: none;
+      padding: 10px 20px; border-radius: 999px; font-size: .88rem; font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,102,204,0.15); transition: background .2s, transform .2s;
     }
-    .scholar-btn:hover {
-      background: #0077ed;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(0,102,204,0.22);
-    }
-    .pub-list { display: flex; flex-direction: column; gap: 18px; }
-    .pub-card {
-      padding: 26px 28px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 17px;
-      align-items: start;
-    }
+    .scholar-btn:hover { background: #0055b3; transform: translateY(-1px); }
+    
+    .pub-list { display: flex; flex-direction: column; gap: 20px; }
+    .pub-card { padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
     .pub-badge {
-      background: var(--apple-blue);
-      color: var(--apple-card);
-      font-size: .72rem;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: .035em;
-      white-space: nowrap;
+      background: var(--apple-blue); color: #fff; font-size: .72rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; text-transform: uppercase; white-space: nowrap;
     }
     .pub-badge.award { background: #b8860b; }
-    .pub-title { font-weight: 800; font-size: 1rem; margin-bottom: 5px; letter-spacing: -0.01em; }
-    .pub-title a { color: var(--apple-text); text-decoration: none; }
+    .pub-title { font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; }
+    .pub-title a { color: var(--apple-text); text-decoration: none; transition: color .2s; }
     .pub-title a:hover { color: var(--apple-blue); text-decoration: underline; }
-    .pub-authors { font-size: .86rem; color: var(--apple-sub); margin-bottom: 7px; }
+    .pub-authors { font-size: .9rem; color: var(--apple-sub); margin-bottom: 8px; }
     .pub-authors strong { color: var(--apple-text); }
-    .pub-venue { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .86rem; }
-    .pub-venue em { color: var(--apple-blue); font-style: italic; font-weight: 700; }
-    .pub-cite { background: var(--apple-bg); color: var(--apple-sub); font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
+    .pub-venue { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .88rem; }
+    .pub-venue em { color: var(--apple-blue); font-style: normal; font-weight: 600; }
+    .pub-cite { background: var(--apple-bg); color: var(--apple-sub); font-size: .78rem; padding: 2px 10px; border-radius: 999px; }
 
     /* ─── INTERNATIONAL ───────────────────────────── */
-    .intl-pills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-    .intl-pill { padding: 18px 20px; font-size: .92rem; display: flex; align-items: center; gap: 12px; }
-    .flag { font-size: 1.3rem; }
+    .intl-pills { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .intl-pill { padding: 20px; font-size: .95rem; display: flex; align-items: flex-start; gap: 14px; }
+    .flag { font-size: 1.4rem; line-height: 1; }
 
     /* ─── FOOTER ──────────────────────────────────── */
     footer {
-      text-align: center;
-      padding: 28px 24px;
-      font-size: .84rem;
-      color: var(--apple-sub);
-      border-top: 1px solid var(--border);
-      background: rgba(255,255,255,0.55);
+      text-align: center; padding: 40px 24px; font-size: .88rem; color: var(--apple-sub);
+      border-top: 1px solid var(--border); background: rgba(255,255,255,0.5);
     }
-    footer a { color: var(--apple-blue) !important; }
+    footer a { color: var(--apple-blue); text-decoration: none; }
 
-    /* ─── APPLE GLASS LIGHTBOX ────────────────────── */
+    /* ─── LIGHTBOX BACKDROP BLUR ───────────────────── */
     .lightbox-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.86);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       display: flex; align-items: center; justify-content: center;
       z-index: 2000; opacity: 0; pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      cursor: zoom-out;
+      transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1); cursor: zoom-out;
     }
     .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
     .lightbox-img {
-      max-width: 88%; max-height: 80vh;
-      border-radius: 24px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.10);
-      transform: scale(0.92);
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      background: var(--apple-card);
-      border: 1px solid rgba(0,0,0,0.035);
+      max-width: 90%; max-height: 82vh; border-radius: var(--radius-md);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.08); transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); background: #eee;
     }
     .lightbox-overlay.active .lightbox-img { transform: scale(1); }
     .lightbox-caption {
-      position: absolute; bottom: 30px;
-      color: var(--apple-text); font-size: .9rem; font-weight: 600;
-      background: var(--apple-card);
-      padding: 10px 24px; border-radius: 999px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-      max-width: min(88vw, 760px); text-align: center;
-      pointer-events: none;
+      position: absolute; bottom: 40px; color: var(--apple-text); font-size: .9rem; font-weight: 500;
+      background: var(--apple-card); padding: 10px 24px; border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center;
     }
 
-    /* ─── BACK TO TOP ─────────────────────────────── */
+    /* ─── BACK TO TOP BUTTON ───────────────────────── */
     .back-to-top {
-      position: fixed; bottom: 36px; right: 36px;
-      width: 48px; height: 48px;
-      background: var(--apple-card); border: 1px solid var(--border);
-      border-radius: 50%; color: var(--apple-text);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; cursor: pointer; z-index: 99;
-      opacity: 0; pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px;
+      background: var(--apple-card); border: 1px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      cursor: pointer; z-index: 99; opacity: 0; pointer-events: none;
+      transition: all 0.25s ease; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
     .back-to-top.show { opacity: 1; pointer-events: auto; }
-    .back-to-top:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); color: var(--apple-blue); }
+    .back-to-top:hover { transform: translateY(-3px); color: var(--apple-blue); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
 
     /* ─── RESPONSIVE BREAKPOINTS ──────────────────── */
     @media (max-width: 850px) {
-      header { padding: 32px 16px; }
-      .hero-bento-container {
-        grid-template-columns: 1fr; /* 窄螢幕自動切換為單欄垂直排列 */
-        gap: 16px;
-      }
-      .hero-text-card { padding: 28px; }
-      .hero-profile-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-      }
-      .hero-lookbook-card {
-        min-height: 420px; /* 行動端依然維持長條張力 */
-        background-position: center 35%; /* 微調行動端視角焦點 */
-      }
+      header { padding: 40px 16px; }
+      .hero-bento-container { grid-template-columns: 1fr; gap: 16px; }
+      .hero-text-card { padding: 32px; }
+      .hero-profile-meta { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-lookbook-card { min-height: 380px; }
     }
 
-    @media (max-width: 700px) {
-      main { padding: 44px 16px 86px; }
-      section { margin-bottom: 58px; }
-      .tl-header { flex-direction: column; }
-      .timeline::before { left: 10px; }
-      .tl-dot { left: 10px; }
-      .tl-item { padding-left: 34px; }
-      .tl-card, .summary-card, .award-card, .pub-card, .skill-group { padding: 22px; }
-      .sticky-nav ul li a { padding: 13px 12px; font-size: .73rem; }
-      .pub-card { grid-template-columns: 1fr; }
-      .back-to-top { right: 18px; bottom: 22px; }
-      .lightbox-caption { bottom: 18px; font-size: .82rem; padding: 8px 16px; }
+    @media (max-width: 640px) {
+      main { padding: 40px 16px 80px; }
+      section { margin-bottom: 60px; }
+      .award-card { flex-direction: column; align-items: flex-start; padding: 24px; }
+      .modern-summary-trigger { width: 100%; justify-content: center; }
+      .timeline::before, .tl-dot { left: 12px; }
+      .tl-item { padding-left: 32px; }
+      .tl-card, .summary-card, .pub-card { padding: 24px; }
+      .pub-card { grid-template-columns: 1fr; gap: 12px; }
+      .sticky-nav ul li a { padding: 14px 16px; font-size: .8rem; }
     }
   </style>
 </head>
@@ -724,8 +458,6 @@
 
 <header>
   <div class="hero-bento-container">
-    
-    <!-- 左側 Bento 卡片：文字與基礎社群連結 -->
     <div class="hero-text-card">
       <div class="hero-profile-meta">
         <img class="avatar" src="jpg/Profile_picture.jpg" alt="Kevin (Shuo-Wen) Chang" />
@@ -752,7 +484,7 @@
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
             <path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
           </svg>
-          Google Scholar
+          Scholar
         </a>
         <a href="https://github.com/Shuo-Wen" target="_blank" rel="noopener">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
@@ -764,19 +496,12 @@
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Download CV
+          CV
         </a>
       </div>
     </div>
 
-    <!-- 右側 Bento 容器：照片與座右銘圖說 (Lookbook Caption) -->
-    <div class="hero-right-bento">
-      <div class="hero-lookbook-card" title="Lookbook Style Portrait"></div>
-      <p class="hero-manifesto-slogan">
-        "I thrive at the intersection of Hardware Engineering, CAD Architecture, and Generative AI, defining the future of how chips are realized."
-      </p>
-    </div>
-
+    <div class="hero-lookbook-card" title="Lookbook Style Portrait"></div>
   </div>
 </header>
 
@@ -793,36 +518,37 @@
 </nav>
 
 <main>
-
+  <!-- Summary Section -->
   <section id="summary">
     <h2 class="section-title">Professional Summary</h2>
     <div class="summary-card">
-      <p style="font-size: 1.08rem; font-weight: 600; line-height: 1.6; margin-bottom: 20px; color: var(--apple-text);">
+      <p style="font-size: 1.1rem; font-weight: 600; line-height: 1.6; margin-bottom: 20px; color: var(--apple-text);">
         I am a hybrid IC Expert and AI Architect specializing in bridging the gap between advanced hardware development and autonomous silicon design frameworks. My expertise spans the entire spectrum of semiconductor innovation — from driving 4nm advanced nodes physical realization at a Tier-1 chip design firm to pioneering automated EDA methodologies leveraging LLM/Multi-Agent closed-loop systems (MCP).
       </p>
-      <p style="margin-bottom: 16px;">
+      <p style="margin-bottom: 16px; color: var(--apple-sub); font-weight: 500;">
         Throughout my career, I have consistently balanced deep industrial execution with rigorous scientific research:
       </p>
-      <ul style="list-style: none; padding: 0;">
-        <li style="position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6;">
+      <ul style="list-style: none;">
+        <li style="position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 0.98rem; line-height: 1.6;">
           <span style="position: absolute; left: 0;">💡</span>
           <strong>AI-Driven Autonomous Design:</strong> Architecting multi-agent closed-loop frameworks to transform traditional APR, routing, and PPA convergence into fully automated, self-optimizing workflows.
         </li>
-        <li style="position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6;">
+        <li style="position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 0.98rem; line-height: 1.6;">
           <span style="position: absolute; left: 0;">💡</span>
           <strong>Advanced Silicon Realization:</strong> Deep hands-on experience in leading-edge process nodes (4nm) and heterogeneous computing platforms within high-performance Data Center environments.
         </li>
-        <li style="position: relative; padding-left: 24px; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">
+        <li style="position: relative; padding-left: 28px; margin-bottom: 20px; font-size: 0.98rem; line-height: 1.6;">
           <span style="position: absolute; left: 0;">💡</span>
           <strong>Scientific Foundation:</strong> Proven track record in premier hardware-software co-design research, accumulating 160+ citations with a premier publication featuring over 100 citations.
         </li>
       </ul>
-      <p style="font-style: italic; color: var(--apple-blue); font-weight: 600; text-align: center; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px;">
+      <p style="font-style: italic; color: var(--apple-blue); font-weight: 600; text-align: center; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px;">
         "I thrive at the intersection of Hardware Engineering, CAD Architecture, and Generative AI, defining the future of how chips are realized."
       </p>
     </div>
   </section>
 
+  <!-- Skills Section -->
   <section id="skills">
     <h2 class="section-title">Skills</h2>
     <div class="skill-groups">
@@ -865,10 +591,10 @@
     </div>
   </section>
 
+  <!-- Experience Section -->
   <section id="experience">
     <h2 class="section-title">Professional Experience</h2>
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
@@ -880,12 +606,14 @@
           <ul>
             <li>Architected a scalable Multi-Agent AI platform using MCP to unify natural language inputs, GB-scale EDA logs, and binary waveform data into an automated debugging ecosystem.</li>
             <li>Developed a production-grade Waveform & EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
-              <details style="margin-top:16px;">
-                <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;font-size:0.9rem;">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
-                <div style="margin-top:12px;">
-                  <a href="jpg/LLM_system_overall.jpg" target="_blank">
-                    <img src="jpg/LLM_system_overall.jpg" alt="Multi-Agent AI + MCP + EDA system architecture" style="width:100%;max-width:580px;border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,0.08);">
-                  </a>
+              <details style="margin-top:16px;" class="modern-details">
+                <summary class="modern-summary-trigger">Click to expand system architecture (LLM + MCP + EDA integration)</summary>
+                <div class="modern-details-content">
+                  <div class="modern-details-inner">
+                    <a href="jpg/LLM_system_overall.jpg" target="_blank">
+                      <img src="jpg/LLM_system_overall.jpg" alt="Multi-Agent AI + MCP + EDA system architecture" style="width:100%;max-width:580px;border-radius:12px;border:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+                    </a>
+                  </div>
                 </div>
               </details>
             </li>
@@ -960,14 +688,13 @@
           </ul>
         </div>
       </div>
-
     </div>
   </section>
 
+  <!-- Education Section -->
   <section id="education">
     <h2 class="section-title">Education</h2>
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
@@ -976,18 +703,18 @@
             <span class="tl-date">Aug 2017 – Jan 2020</span>
           </div>
           <p class="tl-company">National Taiwan University · Taipei, Taiwan</p>
-          <ul style="margin-bottom: 12px;">
+          <ul style="margin-bottom: 16px;">
             <li>GPA: 4.23 / 4.30  |  Rank: <strong>8 / 91</strong></li>
             <li>Coursework: Artificial Neural Networks (A+), Big Data Systems (A+)</li>
           </ul>
 
-          <details class="modern-details" style="margin-bottom: 16px; max-width: 100%;">
+          <details class="modern-details" style="margin-bottom: 16px;">
             <summary class="modern-summary-trigger">View NTU Transcript</summary>
             <div class="modern-details-content">
               <div class="modern-details-inner">
                 <div class="award-photos" style="margin-bottom: 12px;">
-                  <a href="jpg/NTU_Official_Transcript.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/NTU_Official_Transcript.jpg" alt="National Taiwan University Official Transcript (Rank 8/91)" style="max-height: 180px; width: auto; object-fit: contain;" />
+                  <a href="jpg/NTU_Official_Transcript.jpg">
+                    <img src="jpg/NTU_Official_Transcript.jpg" alt="National Taiwan University Official Transcript (Rank 8/91)" style="max-height: 180px;" />
                   </a>
                 </div>
                 <a href="pdf/NTU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 4px;">
@@ -998,24 +725,23 @@
             </div>
           </details>
 
-          <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" target="_blank" rel="noopener" class="award-photos-link">
-              <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy" style="border-radius:14px; border:1px solid var(--border); height:140px;" />
+          <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+            <a href="jpg/2019_IEEE_SMC_Presentation_edited.jpg" class="award-photos-link">
+              <img src="jpg/2019_IEEE_SMC_Presentation_edited.jpg" alt="IEEE SMC 2019 Presentation in Bari, Italy" style="border-radius:12px; border:1px solid var(--border); height:130px;" />
             </a>
             <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               My thesis was presented on 9th Oct 2019 in Bari, Italy. I was invited to serve as the co-chair of my session: <em>Image Processing / Pattern Recognition (II)</em>.
             </p>
           </div>
 
-          <div style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-            <a href="jpg/NTU_graduation_president_lee_conferring.jpg" target="_blank" rel="noopener" class="award-photos-link">
-              <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019" style="border-radius:14px; border:1px solid var(--border); height:140px;" />
+          <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+            <a href="jpg/NTU_graduation_president_lee_conferring.jpg" class="award-photos-link">
+              <img src="jpg/NTU_graduation_president_lee_conferring.jpg" alt="NTU Graduation Ceremony 2019" style="border-radius:12px; border:1px solid var(--border); height:130px;" />
             </a>
             <p style="font-size:.88rem;color:var(--apple-text);line-height:1.6;max-width:420px;padding-top:4px;">
               The former president of NTU and IEEE Fellow, Prof. Si-Chen Lee, presenting the student representative award at the 2019 EECS graduation ceremony.
             </p>
           </div>
-
         </div>
       </div>
 
@@ -1033,23 +759,21 @@
           <ul>
             <li>
               <strong>Selected as International Scholar:</strong> Awarded a highly competitive, full academic scholarship by KU Leuven (#1 in Belgium). The merit-based sponsorship fully covered tuition, a EUR 900/month stipend, and travel grants.
-              
-              <details class="modern-details" style="margin-top: 10px; max-width: 100%;">
+              <details class="modern-details" style="margin-top: 10px;">
                 <summary class="modern-summary-trigger">View KU Leuven Admission Letter</summary>
                 <div class="modern-details-content">
                   <div class="modern-details-inner">
-                    <div class="award-photos" style="margin-bottom: 12px;">
-                      <a href="jpg/KUL_admission_letter.jpg" target="_blank" rel="noopener">
-                        <img src="jpg/KUL_admission_letter.jpg" alt="KU Leuven Letter of Admission & Scholarship Attestation" style="max-height: 180px; width: auto; object-fit: contain;" />
+                    <div class="award-photos">
+                      <a href="jpg/KUL_admission_letter.jpg">
+                        <img src="jpg/KUL_admission_letter.jpg" alt="KU Leuven Letter of Admission & Scholarship Attestation" style="max-height: 180px;" />
                       </a>
                     </div>
                   </div>
                 </div>
               </details>
             </li>
-            <li><strong>Rapid Software Upskilling:</strong> Leveraged a rigorous scientific environment (Faculty of Science) to master Java, and independently architected, developed, and deployed a GUI-based puzzle game for the final project (source code on GitHub).</li>
-            <li><strong>Global Network & Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
-            <li><strong>Cross-Border Resilience:</strong> Demonstrated exceptional time management and adaptability by navigating complex logistics, traveling to over 20 cities across 10 European countries within a 6-month period.</li>
+            <li><strong>Rapid Software Upskilling:</strong> Leveraged a rigorous scientific environment to master Java, and independently architected a GUI puzzle game (code on GitHub).</li>
+            <li><strong>Global Network:</strong> Managed demanding coursework and research in English, building a robust global network with international researchers.</li>
           </ul>
         </div>
       </div>
@@ -1058,28 +782,24 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">BEng, Mechatronic Engineering & Electrical Engineering</span>
+            <span class="tl-role">BEng, Mechatronic & Electrical Engineering</span>
             <span class="tl-date">Sep 2013 – Jun 2017</span>
           </div>
           <p class="tl-company">National Taiwan Normal University · Taipei, Taiwan</p>
-          <ul style="margin-bottom: 8px;">
-            <li>GPA: 4.11 / 4.30  |  Rank: <strong>1 / 59</strong> <span style="margin-left: 8px; font-weight: 700; color: #b8860b; background: rgba(184,134,11,0.1); padding: 2px 8px; border-radius: 6px; font-size: 0.78rem; white-space: nowrap;">6x Presidential Award</span></li>
+          <ul style="margin-bottom: 12px;">
+            <li>GPA: 4.11 / 4.30  |  Rank: <strong>1 / 59</strong> <span style="margin-left: 8px; font-weight: 700; color: #b8860b; background: rgba(184,134,11,0.1); padding: 2px 8px; border-radius: 6px; font-size: 0.78rem;">6x Presidential Award</span></li>
             <li>Awarded 4-year full government scholarship by the Ministry of Education, Taiwan.</li>
           </ul>
           
-          <details class="modern-details" style="margin-top: 8px; max-width: 100%;">
+          <details class="modern-details">
             <summary class="modern-summary-trigger">View NTNU Transcript</summary>
             <div class="modern-details-content">
               <div class="modern-details-inner">
-                <div class="award-photos" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px;">
-                  <a href="jpg/NTNU_Official_Transcript_page1.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/NTNU_Official_Transcript_page1.jpg" alt="NTNU Official Transcript (Page 1)" style="max-height: 150px; width: auto; object-fit: contain;" />
-                  </a>
-                  <a href="jpg/NTNU_Official_Transcript_page2.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/NTNU_Official_Transcript_page2.jpg" alt="NTNU Official Transcript (Page 2)" style="max-height: 150px; width: auto; object-fit: contain;" />
-                  </a>
+                <div class="award-photos">
+                  <a href="jpg/NTNU_Official_Transcript_page1.jpg"><img src="jpg/NTNU_Official_Transcript_page1.jpg" alt="NTNU Official Transcript (Page 1)" style="max-height: 150px;" /></a>
+                  <a href="jpg/NTNU_Official_Transcript_page2.jpg"><img src="jpg/NTNU_Official_Transcript_page2.jpg" alt="NTNU Official Transcript (Page 2)" style="max-height: 150px;" /></a>
                 </div>
-                <a href="pdf/NTNU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 4px;">
+                <a href="pdf/NTNU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 4px; margin-top: 10px;">
                   <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                   Download Complete NTNU Transcript & Awards (PDF)
                 </a>
@@ -1088,15 +808,13 @@
           </details>
         </div>
       </div>
-
     </div>
   </section>
 
+  <!-- Awards Section -->
   <section id="awards">
     <h2 class="section-title">Awards & Recognition</h2>
     <div class="awards-list">
-
-      <!-- 1. NTU Outstanding Student Award -->
       <div class="award-card">
         <div class="award-info">
           <p class="award-title">NTU Outstanding Student Award</p>
@@ -1105,24 +823,17 @@
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
+            <div class="modern-details-inner">
               <div class="award-photos">
-                <a href="avif/NTU_outstanding_youth_award_medal.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" />
-                </a>
-                <a href="avif/NTU_outstanding_youth_with_president.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" />
-                </a>
-                <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
-                </a>
+                <a href="avif/NTU_outstanding_youth_award_medal.avif"><img src="avif/NTU_outstanding_youth_award_medal.avif" alt="NTU Outstanding Student Award medal" /></a>
+                <a href="avif/NTU_outstanding_youth_with_president.avif"><img src="avif/NTU_outstanding_youth_with_president.avif" alt="With university president at award ceremony" /></a>
+                <a href="jpg/NTU_outstanding_youth_group_photo.jpg"><img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
 
-      <!-- 2. NTU Outstanding Achievement Award — EECS -->
       <div class="award-card">
         <div class="award-info">
           <p class="award-title">NTU Outstanding Achievement Award — EECS</p>
@@ -1131,18 +842,15 @@
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
+            <div class="modern-details-inner">
               <div class="award-photos">
-                <a href="jpg/Medal_OA_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" />
-                </a>
+                <a href="jpg/Medal_OA_award.jpg"><img src="jpg/Medal_OA_award.jpg" alt="NTU Outstanding Achievement Award plaque" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
 
-      <!-- 3. NTU Altruistic Award -->
       <div class="award-card">
         <div class="award-info">
           <p class="award-title">NTU Altruistic Award</p>
@@ -1151,24 +859,17 @@
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
+            <div class="modern-details-inner">
               <div class="award-photos">
-                <a href="avif/NTU_altruistic_award_ceremony.avif" target="_blank" rel="noopener">
-                  <img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" />
-                </a>
-                <a href="jpg/Alutric_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" />
-                </a>
-                <a href="jpg/Alutric_award_cerf.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Alutric_award_cerf.jpg" alt="National Taiwan University Altruistic Award Certificate" />
-                </a>
+                <a href="avif/NTU_altruistic_award_ceremony.avif"><img src="avif/NTU_altruistic_award_ceremony.avif" alt="NTU Altruistic Award ceremony" /></a>
+                <a href="jpg/Alutric_award.jpg"><img src="jpg/Alutric_award.jpg" alt="NTU Altruistic Award certificate" /></a>
+                <a href="jpg/Alutric_award_cerf.jpg"><img src="jpg/Alutric_award_cerf.jpg" alt="National Taiwan University Altruistic Award Certificate" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
 
-      <!-- 4. IEEE VTS Best Paper Award -->
       <div class="award-card">
         <div class="award-info">
           <p class="award-title">IEEE VTS Best Paper Award</p>
@@ -1177,110 +878,67 @@
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
+            <div class="modern-details-inner">
               <div class="award-photos">
-                <a href="jpg/2024_VTS_Best_paper_award.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" />
-                </a>
-                <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" />
-                </a>
+                <a href="jpg/2024_VTS_Best_paper_award.jpg"><img src="jpg/2024_VTS_Best_paper_award.jpg" alt="IEEE VTS 2023 Best Paper Award certificate" /></a>
+                <a href="jpg/IEEE_VTS_best_paper_award_medal.jpg"><img src="jpg/IEEE_VTS_best_paper_award_medal.jpg" alt="IEEE VTS Best Paper Award plaque" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
 
-      <!-- 5. Microsoft Imagine Cup Taiwan — 2nd Place -->
       <div class="award-card">
         <div class="award-info">
           <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
-          <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
-          <!-- 評審說明段落優雅地留在文字區塊內部，避免破壞右側按鈕的 Flex 居中排列 -->
-          <p style="font-size: .85rem; color: var(--apple-text); margin-top: 8px; line-height: 1.6;">
+          <p class="award-meta">National Competition · 2018  |  Team: DermAI — Skin lesion diagnosis</p>
+          <p style="font-size: .85rem; color: var(--apple-sub); margin-top: 6px;">
             Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight: 600; text-decoration: none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
           </p>
         </div>
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
-              <div class="award-photos" style="align-items: flex-start; gap: 16px;">
-                <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
-                  <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" style="max-height: 140px; width: auto; object-fit: contain;" />
-                  </a>
-                  <p style="font-size: .78rem; color: var(--apple-sub); max-width: 220px;">1st-round qualifying pass</p>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
-                  <a href="jpg/ImagineCup.png" target="_blank" rel="noopener">
-                    <img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Finals — 2nd Place certificate" style="max-height: 140px; width: auto; object-fit: contain;" />
-                  </a>
-                  <p style="font-size: .78rem; color: var(--apple-sub); max-width: 220px;">National Finals — 2nd Place Certificate</p>
-                </div>
+            <div class="modern-details-inner">
+              <div class="award-photos">
+                <a href="jpg/Imagine_cup_firstrun.jpg"><img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round pass" /></a>
+                <a href="jpg/ImagineCup.png"><img src="jpg/ImagineCup.png" alt="Imagine Cup Taiwan National Finals — 2nd Place" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
 
-      <!-- 6. 2018 Future Finance & Healthcare Hackathon -->
       <div class="award-card">
         <div class="award-info">
-          <p class="award-title">2018 Future Finance & Healthcare Hackathon INFOMRS Taipei</p>
+          <p class="award-title">2018 Future Finance & Healthcare Hackathon</p>
           <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
         </div>
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
           <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
+            <div class="modern-details-inner">
               <div class="award-photos">
-                <a href="avif/Hackathon_future_finance_healthcare_team.avif" target="_blank" rel="noopener">
-                  <img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" />
-                </a>
-                <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
-                </a>
-                <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
-                  <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
-                </a>
+                <a href="avif/Hackathon_future_finance_healthcare_team.avif"><img src="avif/Hackathon_future_finance_healthcare_team.avif" alt="Future Finance & Healthcare Hackathon" /></a>
+                <a href="jpg/Hackthon_3rd.jpg"><img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place" /></a>
+                <a href="jpg/Hackthon_ppc_award.jpg"><img src="jpg/Hackthon_ppc_award.jpg" alt="Hackathon People's Choice Award" style="object-fit: contain; background: #fff;" /></a>
               </div>
             </div>
           </div>
         </details>
       </div>
-
-      <!-- 7. Ministry of Education Full Scholarship -->
-      <div class="award-card">
-        <div class="award-info">
-          <p class="award-title">Ministry of Education Full Scholarship</p>
-          <p class="award-meta">Taiwan Government · 4-year award for rank 1/59 undergraduate</p>
-        </div>
-        <details class="modern-details">
-          <summary class="modern-summary-trigger">View Certificate</summary>
-          <div class="modern-details-content">
-            <div class="modern-details-inner" style="padding: 14px 16px;">
-              <div class="award-photos">
-                <a href="jpg/NTNU_full_scholarship.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTNU_full_scholarship.jpg" alt="Ministry of Education Full Scholarship certificate" style="max-height: 160px; width: auto; object-fit: contain; border-radius: 4px;" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-
     </div>
   </section>
 
+  <!-- Publications Section -->
   <section id="publications">
     <div class="pub-header">
       <h2 class="section-title">Publications</h2>
       <a class="scholar-btn" href="https://scholar.google.com/citations?user=huNBqB0AAAAJ" target="_blank" rel="noopener">
-        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
           <path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
         </svg>
-        View all on Google Scholar
+        Google Scholar
       </a>
     </div>
 
@@ -1289,7 +947,7 @@
         <span class="pub-badge" style="background: #00875a;">Nature Citation</span>
         <div>
           <p class="pub-title">
-            <a href="https://ieeexplore.ieee.org/abstract/document/8914048" target="_blank" rel="noopener noreferrer" title="https://ieeexplore.ieee.org/abstract/document/8914048">
+            <a href="https://ieeexplore.ieee.org/abstract/document/8914048" target="_blank" rel="noopener noreferrer">
               Deep Learning-based Microscopy Segmentation
             </a>
           </p>
@@ -1299,16 +957,18 @@
             <span>· 2019</span>
             <span class="pub-cite">📖 Master Thesis Work</span>
           </div>
-          <details style="margin-top:10px;">
-            <summary style="cursor:pointer;color:var(--apple-blue);font-weight:600;">Cited by Nature Machine Intelligence</summary>
-            <div style="margin-top:8px;">
-              <p style="font-size:0.85rem;">
-                Referenced in
-                <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" title="https://www.nature.com/articles/s42256-021-00420-0" style="color:var(--apple-blue);font-weight:600;text-decoration:none;">
-                  Nature Machine Intelligence article
-                </a>
-              </p>
-              <img src="jpg/citation_by_nature.jpg" alt="Nature Machine Intelligence citation screenshot" style="max-width:480px;width:100%;border-radius:14px;margin-top:6px;border:1px solid var(--border);box-shadow:0 10px 28px rgba(0,0,0,0.06);">
+          <details style="margin-top:10px;" class="modern-details">
+            <summary class="modern-summary-trigger" style="padding: 4px 10px; background: transparent; border: 1px solid var(--border);">Cited by Nature Machine Intelligence</summary>
+            <div class="modern-details-content">
+              <div class="modern-details-inner" style="border: none; padding-top: 8px;">
+                <p style="font-size:0.85rem; margin-bottom: 6px;">
+                  Referenced in
+                  <a href="https://www.nature.com/articles/s42256-021-00420-0" target="_blank" rel="noopener noreferrer" style="color:var(--apple-blue);font-weight:600;text-decoration:none;">
+                    Nature Machine Intelligence article
+                  </a>
+                </p>
+                <img src="jpg/citation_by_nature.jpg" alt="Nature Machine Intelligence citation" style="max-width:480px;width:100%;border-radius:8px;border:1px solid var(--border);">
+              </div>
             </div>
           </details>
         </div>
@@ -1339,7 +999,7 @@
               Data-Driven Automation for Bio-Experiment Workflows
             </a>
           </p>
-          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al.  (IMEC, Belgium)</p>
+          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al. (IMEC, Belgium)</p>
           <div class="pub-venue">
             <em>Frontiers in Neuroscience</em>
             <span>· 2019</span>
@@ -1347,41 +1007,37 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
+  <!-- International Section -->
   <section id="international">
     <h2 class="section-title">International Experience</h2>
     <div class="intl-pills">
       <div class="intl-pill"><span class="flag">🇧🇪</span><span>Research internship at IMEC, Belgium — Collaborated with European engineers and scientists</span></div>
       <div class="intl-pill"><span class="flag">🇧🇪</span><span>Exchange student at KU Leuven — Conducted coursework and research entirely in English</span></div>
       <div class="intl-pill"><span class="flag">🇸🇬</span><span>Engineering internship at MediaTek, Singapore</span></div>
-      <div class="intl-pill"><span class="flag">🌐</span><span>Cross-Cultural Adaptability: Skilled at collaborating across time zones, cultures, and global engineering organizations</span></div>
+      <div class="intl-pill"><span class="flag">🌐</span><span>Cross-Cultural Adaptability: Skilled at collaborating across time zones and global engineering teams</span></div>
     </div>
   </section>
-
 </main>
 
 <footer>
-  <p>Kevin (Shuo-Wen) Chang  · 
-    <a href="mailto:changshuowen@gmail.com" style="color:var(--apple-blue);text-decoration:none;">changshuowen@gmail.com</a>
-     · 
-    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener" style="color:var(--apple-blue);text-decoration:none;">LinkedIn</a>
-  </p>
+  <p>Kevin (Shuo-Wen) Chang · <a href="mailto:changshuowen@gmail.com">changshuowen@gmail.com</a> · <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 
 <script>
-  // Smooth scroll with sticky-nav offset.
+  // 一體化平滑捲動（包含上方導航欄的高度補償）
   document.querySelectorAll('.sticky-nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
-      const nav = document.querySelector('.sticky-nav');
-      const navH = nav ? nav.offsetHeight : 0;
-      const top = target.getBoundingClientRect().top + window.scrollY - navH - 12;
-      window.scrollTo({ top, behavior: 'smooth' });
+      const navH = document.querySelector('.sticky-nav')?.offsetHeight || 0;
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - navH - 12,
+        behavior: 'smooth'
+      });
     });
   });
 
@@ -1390,59 +1046,49 @@
   const backToTopBtn = document.getElementById('backToTop');
 
   function updateScrollUI() {
-    let currentActive = sections.length ? sections[0].getAttribute('id') : '';
-    const nav = document.querySelector('.sticky-nav');
-    const navH = (nav ? nav.offsetHeight : 0) + 24;
     const scrollPos = window.scrollY;
+    const navH = (document.querySelector('.sticky-nav')?.offsetHeight || 0) + 24;
 
+    // Back to top 顯示邏輯
     if (backToTopBtn) {
-      if (scrollPos > 400) backToTopBtn.classList.add('show');
-      else backToTopBtn.classList.remove('show');
+      backToTopBtn.classList.toggle('show', scrollPos > 400);
     }
 
+    // 當前閱讀區塊高亮
+    let currentActive = sections[0]?.getAttribute('id') || '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - navH;
-      if (scrollPos >= sectionTop) currentActive = section.getAttribute('id');
+      if (scrollPos >= section.offsetTop - navH) {
+        currentActive = section.getAttribute('id');
+      }
     });
 
-    if (sections.length && (window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 20) {
+    // 頁尾強制定底高亮
+    if ((window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 20) {
       currentActive = sections[sections.length - 1].getAttribute('id');
     }
 
     navLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === `#${currentActive}`) a.classList.add('active');
+      a.classList.toggle('active', a.getAttribute('href') === `#${currentActive}`);
     });
   }
 
   window.addEventListener('scroll', updateScrollUI, { passive: true });
-  window.addEventListener('resize', updateScrollUI);
-  window.addEventListener('load', updateScrollUI);
-  updateScrollUI();
+  if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // Glassmorphism lightbox for award and education images.
+  // 高級磨砂玻璃 Lightbox 燈箱邏輯
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
 
   document.querySelectorAll('.award-photos a, .award-photos-link').forEach(anchor => {
-    const img = anchor.querySelector('img');
-    if (!img || !lightbox || !lightboxImg) return;
-
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const imageSrc = this.getAttribute('href') || img.getAttribute('src');
-      const imageAlt = img.getAttribute('alt') || 'Image View';
+      const img = this.querySelector('img');
+      if (!img || !lightbox || !lightboxImg) return;
 
-      lightboxImg.src = imageSrc;
-      lightboxImg.alt = imageAlt;
-      if (lightboxCaption) lightboxCaption.innerText = imageAlt;
+      lightboxImg.src = this.getAttribute('href') || img.src;
+      lightboxImg.alt = img.alt || 'View';
+      if (lightboxCaption) lightboxCaption.innerText = img.alt || '';
 
       lightbox.classList.add('active');
       lightbox.setAttribute('aria-hidden', 'false');
@@ -1455,14 +1101,11 @@
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (lightboxImg) lightboxImg.src = '';
+    setTimeout(() => { if (lightboxImg) lightboxImg.src = ''; }, 300);
   }
 
   if (lightbox) lightbox.addEventListener('click', closeLightbox);
-  if (lightboxImg) lightboxImg.addEventListener('click', e => e.stopPropagation());
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
-  });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>

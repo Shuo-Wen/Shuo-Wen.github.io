@@ -135,13 +135,6 @@
       box-shadow: 0 10px 24px rgba(0, 102, 204, 0.2);
     }
 
-    /* 右側 Bento 垂直排版容器 */
-    .hero-right-bento {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     /* 右側雜誌封面感滿版區塊卡片 (Lookbook Style) */
     .hero-lookbook-card {
       position: relative;
@@ -153,7 +146,6 @@
       box-shadow: 
         0 12px 36px rgba(0,0,0,0.06), 
         inset 0 0 20px rgba(0,0,0,0.03); /* 細微內陰影 */
-      flex: 1; /* 彈性填滿容器高度 */
       min-height: 340px;
       overflow: hidden;
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
@@ -174,19 +166,6 @@
       box-shadow: 
         0 20px 48px rgba(0,0,0,0.12), 
         inset 0 0 24px rgba(0,0,0,0.02);
-    }
-
-    /* Manifesto Slogan 樣式 (座右銘/圖說) */
-    .hero-manifesto-slogan {
-      font-size: 0.88rem;
-      font-style: italic;
-      color: #555555;
-      line-height: 1.5;
-      text-align: center;
-      font-weight: 500;
-      padding: 0 8px;
-      max-width: 95%;
-      margin: 4px auto 0;
     }
 
     /* ─── FLOATING GLASS NAV ──────────────────────── */
@@ -391,6 +370,7 @@
       top: 3px;
     }
 
+    /* ─── AWARDS SECTION OPTIMIZATION ──────────────── */
     /* ─── AWARDS SECTION OPTIMIZATION (FLEXBOX EVOLUTION) ─── */
     .awards-list {
       display: flex;
@@ -769,13 +749,8 @@
       </div>
     </div>
 
-    <!-- 右側 Bento 容器：照片與座右銘圖說 (Lookbook Caption) -->
-    <div class="hero-right-bento">
-      <div class="hero-lookbook-card" title="Lookbook Style Portrait"></div>
-      <p class="hero-manifesto-slogan">
-        "I thrive at the intersection of Hardware Engineering, CAD Architecture, and Generative AI, defining the future of how chips are realized."
-      </p>
-    </div>
+    <!-- 右側 Bento 卡片：雜誌封面 Lookbook 直式滿版大圖 -->
+    <div class="hero-lookbook-card" title="Lookbook Style Portrait"></div>
 
   </div>
 </header>
