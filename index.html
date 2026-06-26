@@ -34,17 +34,17 @@
       border-bottom: 1px solid var(--border);
     }
     
-    /* Bento 英雄區塊主容器 */
+    /* Bento Hero Section Main Container */
     .hero-bento-container {
       max-width: 980px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 2fr 1fr; /* 左側文字 2/3，右側 Lookbook 卡片 1/3 */
+      grid-template-columns: 2fr 1fr; /* Left-side text card 2/3, Right-side Lookbook card 1/3 */
       gap: 24px;
       align-items: stretch;
     }
 
-    /* 左側文字資訊卡片 */
+    /* Left-side text information card */
     .hero-text-card {
       background: var(--apple-card);
       border: 1px solid rgba(0,0,0,0.035);
@@ -70,7 +70,7 @@
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      margin: 0; /* 取消原本的置中 */
+      margin: 0; /* Cancel original default centering */
       flex-shrink: 0;
     }
 
@@ -93,26 +93,27 @@
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start; /* 改為左對齊 */
-      gap: 10px;
-      margin-top: 4px;
+      justify-content: flex-start; /* Aligns items to the left */
+      gap: 14px;          /* Increased gap to 14px for more spacious breathing room */
+      margin-top: 16px;    /* Increased margin to 16px for comfortable clearance from title */
     }
-    
+
     .contact-links a {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: var(--apple-bg); /* 改用淺灰底按鈕與白色卡片形成層次 */
+      gap: 8px;           /* Finetuned gap between icon and text */
+      background: var(--apple-bg); /* Use light gray background to create depth layers against the white card */
       border: 1px solid var(--border);
       color: var(--apple-text);
       text-decoration: none;
-      padding: 8px 16px;
+      padding: 10px 20px; /* Visibly enlarged to 10px 20px for better click target and premium feel */
       border-radius: 999px;
-      font-size: .85rem;
+      font-size: .9rem;   /* Increased font size to .9rem for readability */
       font-weight: 500;
       transition: transform .22s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease;
     }
-    
+
+    /* Kept completely untouched as requested for interactive transitions */
     .contact-links a:hover {
       background: #e8e8ed;
       transform: translateY(-1px) scale(1.015);
@@ -120,14 +121,16 @@
     }
     .contact-links a svg { flex-shrink: 0; }
 
+    /* Fine-tuned blue CTA button height ratios to match neighboring buttons */
     .contact-links a[download] {
       background: var(--apple-blue);
       color: var(--apple-card);
       border-color: var(--apple-blue);
       font-weight: 600;
+      padding: 10px 22px; /* Fine-tuned width to 22px to establish a strong focal point */
       box-shadow: 0 6px 18px rgba(0, 102, 204, 0.12);
     }
-    
+
     .contact-links a[download]:hover {
       background: #0077ed;
       border-color: #0077ed;
@@ -135,14 +138,14 @@
       box-shadow: 0 10px 24px rgba(0, 102, 204, 0.2);
     }
 
-    /* 右側 Bento 垂直排版容器 */
+    /* Right Bento vertical layout container */
     .hero-right-bento {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    /* 右側雜誌封面感滿版區塊卡片 (Lookbook Style) */
+    /* Right magazine-cover style full-bleed card (Lookbook Style) */
     .hero-lookbook-card {
       position: relative;
       background-image: url('jpg/casual_pic.jpg');
@@ -152,14 +155,14 @@
       border: 1px solid rgba(0,0,0,0.04);
       box-shadow: 
         0 12px 36px rgba(0,0,0,0.06), 
-        inset 0 0 20px rgba(0,0,0,0.03); /* 細微內陰影 */
-      flex: 1; /* 彈性填滿容器高度 */
+        inset 0 0 20px rgba(0,0,0,0.03); /* Subtle inset shadow */
+      flex: 1; /* Flexibly fills container height */
       min-height: 340px;
       overflow: hidden;
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
     }
 
-    /* Lookbook 卡片的 Apple 風格微光邊緣高光效果 */
+    /* Apple-style shimmer edge highlight effect for Lookbook card */
     .hero-lookbook-card::after {
       content: '';
       position: absolute;
@@ -176,7 +179,7 @@
         inset 0 0 24px rgba(0,0,0,0.02);
     }
 
-    /* Manifesto Slogan 樣式 (座右銘/圖說) */
+    /* Manifesto Slogan style (Motto / Caption) */
     .hero-manifesto-slogan {
       font-size: 0.88rem;
       font-style: italic;
@@ -395,29 +398,29 @@
     .awards-list {
       display: flex;
       flex-direction: column;
-      gap: 16px; /* 卡片與卡片之間的呼吸間距 */
+      gap: 16px; /* Breathing gap between sequential cards */
     }
 
     .award-card { 
       background: var(--apple-card); 
       border: 1px solid var(--border); 
       border-radius: 12px; 
-      padding: 22px 26px; /* 高級寬敞內距，根除死黏邊框的窒息感 */
+      padding: 22px 26px; /* Spacious, premium padding to completely eliminate cramped border issues */
       box-sizing: border-box;
 
-      /* 核心：將卡片設為橫向 Flexbox 佈局，左右對齊並垂直居中 */
+      /* Core: Configure card as horizontal Flexbox layout, space-between and vertically centered */
       display: flex; 
       flex-direction: row; 
       justify-content: space-between; 
       align-items: center; 
       gap: 24px; 
-      flex-wrap: wrap; /* 確保在小螢幕時能優雅換行 */
+      flex-wrap: wrap; /* Elegant wrap on smaller screen viewports */
     }
 
-    /* 文字包裹外殼：強迫它往左邊靠並佔滿剩餘寬度 */
+    /* Text wrapper shell: Forces it to align left and occupy remaining width space */
     .award-info {
       flex: 1;
-      min-width: 260px; /* 建立安全換行臨界點 */
+      min-width: 260px; /* Safe wraps breakpoint barrier */
     }
 
     .award-title {
@@ -426,20 +429,20 @@
       letter-spacing: -0.01em;
       color: var(--apple-text);
       margin-top: 0;
-      margin-bottom: 6px; /* 與 Meta 拉開輕微距離 */
+      margin-bottom: 6px; /* Brief gap from Meta */
     }
 
     .award-meta {
       font-size: .86rem;
       color: var(--apple-sub);
-      margin: 0; /* 移除自然邊距以免撐壞雙欄高度 */
+      margin: 0; /* Clear natural borders to avoid breaking double column height */
     }
 
     /* ─── MODERN DETAILS & AWARDS STYLE ───────────── */
     .modern-details {
-      /* 關鍵修正：在雙欄佈局下，收納盒在外面時不需要 margin-top 和 border-top */
+      /* Key Fix: In double column layout, outer details element requires no margin-top or border-top */
       margin: 0; 
-      flex-shrink: 0; /* 保護按鈕，不被大段文字壓扁變形 */
+      flex-shrink: 0; /* Protect buttons from being squished and deformed by long paragraph texts */
     }
 
     .modern-summary-trigger {
@@ -451,14 +454,14 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px; /* 幫按鈕增加點擊熱區感 */
-      background: rgba(0, 102, 204, 0.05); /* 微弱的 Apple Blue 莫蘭迪底色 */
+      padding: 6px 12px; /* Pad buttons to add touch/click active zones */
+      background: rgba(0, 102, 204, 0.05); /* Soft, subtle Apple Blue Morandi background */
       border-radius: 6px;
       transition: background 0.2s ease;
     }
 
     .modern-summary-trigger:hover {
-      background: rgba(0, 102, 204, 0.1); /* 滑鼠懸停微亮反饋 */
+      background: rgba(0, 102, 204, 0.1); /* Hover state subtle feedback */
     }
 
     .modern-summary-trigger::-webkit-details-marker {
@@ -475,18 +478,18 @@
       content: '⊖';
     }
 
-    /* 當摺疊盒被打開時，強迫內部的照片區塊橫跨 100% 寬度，乖乖出現在卡片正下方 */
+    /* When the details box is opened, force the inner photo segment to span 100% width neatly below the card */
     .modern-details-content {
       width: 100%;
       flex-basis: 100%;
       animation: fadeInSlide 0.3s ease-out forwards;
     }
 
-    /* 照片內容內距：展開後與灰色色塊內部保持美觀留白 */
+    /* Photo content padding: Aesthetic whitespace inside gray block container */
     .modern-details-inner {
       padding-top: 16px;
       margin-top: 14px;
-      border-top: 1px solid var(--border); /* 將原本在按鈕上方的分開線，移到展開後的內容上方 */
+      border-top: 1px solid var(--border); /* Moved the original trigger divider line above the expanded contents */
     }
 
     @keyframes fadeInSlide {
@@ -494,10 +497,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── 響應式：手機版完美優化 ─── */
+    /* ─── Responsive: Perfect Mobile Optimization ─── */
     @media (max-width: 640px) {
       .award-card {
-        flex-direction: column; /* 手機版自動切換回原本的上下排列 */
+        flex-direction: column; /* Switches automatically to vertical stacking in mobile viewports */
         align-items: flex-start;
         gap: 12px;
         padding: 18px 20px;
@@ -507,7 +510,7 @@
         min-width: 0;
       }
       .modern-summary-trigger {
-        width: fit-content; /* 按鈕不強行撐滿，保持精緻尺寸 */
+        width: fit-content; /* Ensure buttons do not full-stretch unnecessarily, maintaining high refinement */
       }
     }
 
@@ -683,7 +686,7 @@
     @media (max-width: 850px) {
       header { padding: 32px 16px; }
       .hero-bento-container {
-        grid-template-columns: 1fr; /* 窄螢幕自動切換為單欄垂直排列 */
+        grid-template-columns: 1fr; /* Narrow viewports switch to single column stacking */
         gap: 16px;
       }
       .hero-text-card { padding: 28px; }
@@ -693,8 +696,8 @@
         gap: 14px;
       }
       .hero-lookbook-card {
-        min-height: 420px; /* 行動端依然維持長條張力 */
-        background-position: center 35%; /* 微調行動端視角焦點 */
+        min-height: 420px; /* Maintain vertical visual tension on mobile devices */
+        background-position: center 35%; /* Adjust center focal viewport */
       }
     }
 
@@ -725,7 +728,7 @@
 <header>
   <div class="hero-bento-container">
     
-    <!-- 左側 Bento 卡片：文字與基礎社群連結 -->
+    <!-- Left Bento Card: Text and Social Links -->
     <div class="hero-text-card">
       <div class="hero-profile-meta">
         <img class="avatar" src="jpg/Profile_picture.jpg" alt="Kevin (Shuo-Wen) Chang" />
@@ -769,7 +772,7 @@
       </div>
     </div>
 
-    <!-- 右側 Bento 容器：照片與座右銘圖說 (Lookbook Caption) -->
+    <!-- Right Bento Container: Portrait and Manifesto Caption -->
     <div class="hero-right-bento">
       <div class="hero-lookbook-card" title="Lookbook Style Portrait"></div>
       <p class="hero-manifesto-slogan">
@@ -817,9 +820,6 @@
           <strong>Scientific Foundation:</strong> Proven track record in premier hardware-software co-design research, accumulating 160+ citations with a premier publication featuring over 100 citations.
         </li>
       </ul>
-      <p style="font-style: italic; color: var(--apple-blue); font-weight: 600; text-align: center; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px;">
-        "I thrive at the intersection of Hardware Engineering, CAD Architecture, and Generative AI, defining the future of how chips are realized."
-      </p>
     </div>
   </section>
 
@@ -1196,7 +1196,7 @@
         <div class="award-info">
           <p class="award-title">Microsoft Imagine Cup Taiwan — 2nd Place</p>
           <p class="award-meta">National Competition · 2018  |  Team: DermAI — AI-powered skin lesion diagnosis</p>
-          <!-- 評審說明段落優雅地留在文字區塊內部，避免破壞右側按鈕的 Flex 居中排列 -->
+          <!-- Judge description paragraph stays gracefully inside the text block to avoid breaking vertical alignment of buttons on the right -->
           <p style="font-size: .85rem; color: var(--apple-text); margin-top: 8px; line-height: 1.6;">
             Reviewers included <a href="https://www.linkedin.com/in/kensun/" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight: 600; text-decoration: none;">Ken Sun</a>, General Manager of Microsoft Taiwan.
           </p>
