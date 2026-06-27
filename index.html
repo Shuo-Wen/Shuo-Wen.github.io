@@ -715,6 +715,40 @@
         min-width: 0;
       }
     }
+    /* 學術連結按鈕樣式 */
+    .academic-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background-color: var(--apple-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--apple-text);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--apple-blue);
+    }
+
+    .social-btn i {
+      color: var(--apple-blue);
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
