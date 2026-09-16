@@ -13,9 +13,9 @@
       --apple-blue: #0066cc;        /* 經典蘋果藍 */
       --apple-card: #ffffff;
       --apple-accent: #0071e3;
-      --border: rgba(0, 0, 0, 0.07);/* 輕量化邊框 */
+      --border: rgba(0, 0, 0, 0.07);/* 輕量化邊框，抹除生硬線條 */
       --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.045); /* 柔和漂浮陰影 */
+      --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.045); /* 帶有空氣感的柔和漂浮陰影 */
       --shadow-lg: 0 24px 58px rgba(0, 0, 0, 0.08);
     }
 
@@ -25,47 +25,49 @@
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
       background: var(--apple-bg);
       color: var(--apple-text);
-      line-height: 1.65;
-      letter-spacing: -0.015em;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.65; /* 提高行高，釋放文字呼吸空間 */
+      letter-spacing: -0.015em; /* 讓系統字體更精緻緊實，充滿頂級設計質感 */
+      -webkit-font-smoothing: antialiased; /* Mac/iOS 級字體渲染優化 */
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
     }
-
+    /* ─── APPLE-STYLE HERO (BENTO LOOKBOOK) ────────────────────────── */
     header {
       background: radial-gradient(circle at top, #ffffff 0%, #f5f5f7 100%);
       color: var(--apple-text);
-      padding: 80px 24px 64px 24px;
+      padding: 80px 24px 64px 24px; /* 拉大頂部垂直留白 */
       border-bottom: 1px solid var(--border);
     }
     
     .hero-bento-container {
-      display: flex;
-      gap: 30px;
-      align-items: stretch;
-      max-width: 980px;
+      display: flex; /* 啟用水平並排 */
+      gap: 30px;      /* 確保圖片/Motto 與左側文字有足夠間距 */
+      align-items: stretch; /* 讓左右兩欄等高，排版更精緻 */
+      max-width: 980px; /* 【關鍵修正】原本 1200px 改為 980px，與下方 main 區塊完全同步 */
       margin: 0 auto;
     }
 
+    /* 右側照片與 Slogan 區塊 */
     .hero-right-bento {
-      flex: 0 0 320px;
+      flex: 0 0 320px; /* 【關鍵修正】設定 flex-grow=0 (不放大), flex-shrink=0 (不壓縮), 鎖死 320px 寬度 */
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
+    /* 左側文字卡片 */
     .hero-text-card {
-      flex: 1 1 0%;
+      flex: 1 1 0%; /* 【關鍵修正】讓左側卡片自動彈性伸展，填滿扣除右側後的剩餘空間 */
       background: var(--apple-card);
       border: 1px solid rgba(0,0,0,0.03);
-      border-radius: 28px;
+      border-radius: 28px; /* 圓角微調加大，更具包容度 */
       padding: 44px;
       text-align: left;
       display: flex;
       flex-direction: column;
       justify-content: center;
       box-shadow: var(--shadow-md);
-      min-width: 0;
+      min-width: 0; /* 【關鍵修正】防止卡片內部有超長文字時，強行把右邊照片擠壓變形 */
     }
 
     .hero-profile-meta {
@@ -137,6 +139,7 @@
     }
     .contact-links a svg { flex-shrink: 0; transition: transform 0.2s ease; }
     .contact-links a:hover stroke, .contact-links a:hover fill { color: var(--apple-blue); }
+    /* force IEEE icon as black */
     .contact-links a .fa-graduation-cap { color: #1d1d1f !important; }
 
     .contact-links a[download] {
@@ -197,6 +200,7 @@
       letter-spacing: -0.01em;
     }
 
+    /* ─── FLOATING GLASS NAV ──────────────────────── */
     .sticky-nav {
       position: sticky;
       top: 0;
@@ -239,6 +243,7 @@
       border-bottom-color: var(--apple-blue);
     }
 
+    /* ─── LAYOUT ──────────────────────────────────── */
     main {
       max-width: 980px;
       margin: 0 auto;
@@ -256,6 +261,7 @@
       margin-bottom: 32px;
     }
 
+    /* ─── APPLE CARDS / MICRO-INTERACTIONS ────────── */
     .summary-card,
     .tl-card,
     .award-card,
@@ -302,6 +308,7 @@
     .summary-card li { position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 0.98rem; line-height: 1.6; }
     .summary-card li span { position: absolute; left: 0; }
 
+    /* ─── SKILLS AS BENTO GRID ────────────────────── */
     .skill-groups {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -343,6 +350,7 @@
       box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
     }
 
+    /* ─── TIMELINE ────────────────────────────────── */
     .timeline { position: relative; }
     .timeline::before {
       content: '';
@@ -420,6 +428,7 @@
       font-size: 0.9rem;
     }
 
+    /* ─── AWARDS SECTION OPTIMIZATION ─── */
     .awards-list {
       display: flex;
       flex-direction: column;
@@ -457,6 +466,7 @@
       margin: 0;
     }
 
+    /* ─── MODERN DETAILS & AWARDS STYLE ───────────── */
     .modern-details {
       margin: 0; 
       flex-shrink: 0;
@@ -513,6 +523,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ─── IMAGES & PHOTO WRAPPER ─────────────────── */
     .award-photos {
       display: flex;
       flex-wrap: wrap;
@@ -551,6 +562,7 @@
       background: #fff;
     }
 
+    /* ─── PUBLICATIONS ────────────────────────────── */
     .pub-header {
       display: flex;
       justify-content: space-between;
@@ -613,6 +625,7 @@
     .pub-venue em { color: var(--apple-blue); font-style: italic; font-weight: 600; }
     .pub-cite { background: #f5f5f7; color: var(--apple-sub); font-size: .78rem; padding: 4px 12px; border-radius: 999px; font-weight: 500; }
 
+    /* ─── INTERNATIONAL ───────────────────────────── */
     .intl-pills {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -621,6 +634,7 @@
     .intl-pill { padding: 22px 24px; font-size: .94rem; display: flex; align-items: center; gap: 16px; line-height: 1.5; }
     .flag { font-size: 1.4rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06)); }
 
+    /* ─── FOOTER ──────────────────────────────────── */
     footer {
       text-align: center;
       padding: 40px 24px;
@@ -632,6 +646,7 @@
     footer a { color: var(--apple-text) !important; text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
     footer a:hover { color: var(--apple-blue) !important; }
 
+    /* ─── APPLE GLASS LIGHTBOX ────────────────────── */
     .lightbox-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -665,6 +680,7 @@
       border: 1px solid rgba(0,0,0,0.02);
     }
 
+    /* ─── BACK TO TOP ─────────────────────────────── */
     .back-to-top {
       position: fixed; bottom: 40px; right: 40px;
       width: 48px; height: 48px;
@@ -679,10 +695,11 @@
     .back-to-top.show { opacity: 1; pointer-events: auto; }
     .back-to-top:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); color: var(--apple-blue); border-color: rgba(0,102,204,0.15); }
 
+    /* ─── RESPONSIVE BREAKPOINTS ──────────────────── */
     @media (max-width: 850px) {
       header { padding: 48px 20px 40px; }
       .hero-bento-container {
-        flex-direction: column;
+        flex-direction: column; /* 窄螢幕時優雅轉為垂直單欄排列 */
         gap: 20px;
       }
       .hero-right-bento {
@@ -760,6 +777,7 @@
           Google Scholar
         </a>
 
+        <!-- IEEE 連結 (使用 Font Awesome) -->
         <a href="https://ieeexplore.ieee.org/author/37087106146" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-graduation-cap"></i> IEEE Author
         </a>
@@ -805,7 +823,7 @@
     <h2 class="section-title">Professional Summary</h2>
     <div class="summary-card">
       <p class="summary-highlight">
-        I am a hybrid IC Expert and AI Architect specializing in bridging the gap between advanced hardware development and autonomous silicon design frameworks. My expertise spans the entire spectrum of semiconductor innovation — from driving N2 (2nm) advanced nodes physical evaluation at a Tier-1 chip design firm to pioneering automated EDA methodologies leveraging LLM/Multi-Agent closed-loop systems (MCP).
+        I am a hybrid IC Expert and AI Architect specializing in bridging the gap between advanced hardware development and autonomous silicon design frameworks. My expertise spans the entire spectrum of semiconductor innovation — from driving 4nm advanced nodes physical realization at a Tier-1 chip design firm to pioneering automated EDA methodologies leveraging LLM/Multi-Agent closed-loop systems (MCP).
       </p>
       <p class="summary-sub">
         Throughout my career, I have consistently balanced deep industrial execution with rigorous scientific research:
@@ -817,7 +835,7 @@
         </li>
         <li>
           <span>💡</span>
-          <strong>Advanced Silicon Realization:</strong> Deep hands-on experience in leading-edge process nodes (2nm / 4nm) and heterogeneous computing platforms within high-performance Data Center and AI ASIC environments.
+          <strong>Advanced Silicon Realization:</strong> Deep hands-on experience in leading-edge process nodes (4nm) and heterogeneous computing platforms within high-performance Data Center environments.
         </li>
         <li>
           <span>💡</span>
@@ -833,19 +851,19 @@
       <div class="skill-group">
         <h4>Digital Implementation & P&R</h4>
         <div class="badges">
-          <span class="badge">Innovus</span><span class="badge">InnoStack</span><span class="badge">ICC2</span><span class="badge">Floorplan</span><span class="badge">Placement</span><span class="badge">CTS</span><span class="badge">Routing</span><span class="badge">Timing Closure</span><span class="badge">MMMC Setup</span>
+          <span class="badge">Innovus</span><span class="badge">ICC2</span><span class="badge">Floorplan</span><span class="badge">Placement</span><span class="badge">CTS</span><span class="badge">Routing</span><span class="badge">Timing Closure</span><span class="badge">QoR Optimization</span>
         </div>
       </div>
       <div class="skill-group">
         <h4>Timing & Power Analysis</h4>
         <div class="badges">
-          <span class="badge">STA (PrimeTime)</span><span class="badge">PPA Evaluation</span><span class="badge">Delay Modeling</span><span class="badge">IR-Drop Analysis</span><span class="badge">Power Grid Optimization</span>
+          <span class="badge">STA</span><span class="badge">PPA Evaluation</span><span class="badge">Delay Modeling</span><span class="badge">Timing Degradation</span><span class="badge">Power Analysis</span>
         </div>
       </div>
       <div class="skill-group">
         <h4>Programming & Scripting</h4>
         <div class="badges">
-          <span class="badge">Tcl</span><span class="badge">Perl</span><span class="badge">Python</span><span class="badge">Shell</span><span class="badge">Autonomous Flow Automation</span>
+          <span class="badge">Tcl</span><span class="badge">Perl</span><span class="badge">Python</span><span class="badge">Shell</span><span class="badge">EDA Flow Automation</span>
         </div>
       </div>
       <div class="skill-group">
@@ -857,7 +875,7 @@
       <div class="skill-group">
         <h4>Physical Verification & Sign-off</h4>
         <div class="badges">
-          <span class="badge">DRV Analysis</span><span class="badge">DRC (Calibre)</span><span class="badge">LEC</span><span class="badge">CLP</span><span class="badge">2nm Node Sign-off</span>
+          <span class="badge">DRV Analysis</span><span class="badge">DRC (Calibre)</span><span class="badge">LEC</span><span class="badge">Advanced Node Sign-off</span>
         </div>
       </div>
       <div class="skill-group">
@@ -873,22 +891,6 @@
     <h2 class="section-title">Professional Experience</h2>
     <div class="timeline">
 
-      <!-- MediaTek Experience Entry -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-header">
-            <span class="tl-role">Sr. Silicon Realization Designer</span>
-            <span class="tl-date">Aug 2026 – Present</span>
-          </div>
-          <p class="tl-company">MediaTek · Hsinchu, Taiwan</p>
-          <ul>
-            <li><strong>N2 (2nm) Block Setup &amp; InnoStack Integration:</strong> Drive initial block-level physical evaluation and floorplanning setup for next-generation Cloud AI ASICs on the N2 (2nm) process node, leveraging Cadence Innovus and InnoStack to establish baseline MMMC timing, power-grid, and routing congestion targets.</li>
-            <li><strong>Autonomous APR Flow Adaptation &amp; QA:</strong> Integrate and fine-tune team Autonomous APR Flows for assigned N2 blocks, configuring automated QA checking pipelines (covering LEC, CLP, PV, and STA) to accelerate early-stage Place-Opt cycles and sign-off correlation.</li>
-          </ul>
-        </div>
-      </div>
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
@@ -899,7 +901,7 @@
           <p class="tl-company">Qualcomm Semiconductor Corporation · Hsinchu, Taiwan</p>
           <ul>
             <li>Architected a scalable Multi-Agent AI platform using MCP to unify natural language inputs, GB-scale EDA logs, and binary waveform data into an automated debugging ecosystem.</li>
-            <li>Developed a production-grade Waveform &amp; EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
+            <li>Developed a production-grade Waveform & EDA Agent using Few-Shot Prompting and constrained JSON schemas, enabling an LLM to autonomously translate engineer intent into Tcl command sequences driving Verdi and Cadence Innovus APIs.
               <details style="margin-top:16px;">
                 <summary class="modern-summary-trigger">Click to expand system architecture</summary>
                 <div style="margin-top:16px;">
@@ -910,7 +912,7 @@
               </details>
             </li>
             <li>Engineered a closed-loop Self-Correction mechanism tracking background Linux subprocess stdout errors, achieving near-100% execution success rate under target test suites with 2–3 second auto-debug cycles.</li>
-            <li>Provided design-aware analysis linking silicon behavior back to implementation characteristics, improving understanding of QoR and design-flow impact.</li>
+            <li>Provided design-aware analysis linking silicon behavior back to implementation characteristics, improving understanding of QoR and design-flow impact</li>
             <li>Analyzed large-scale test datasets with NYCU lab to identify abnormal design behavior and systematic failure patterns related to DFT, MBIST, and ATPG diagnosis.</li>
           </ul>
         </div>
@@ -920,17 +922,17 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">APR Opt Engine Engineer — Innovus R&amp;D</span>
+            <span class="tl-role">APR Opt Engine Engineer — Innovus R&D</span>
             <span class="tl-date">Feb 2020 – Jul 2021</span>
           </div>
           <p class="tl-company">Cadence Design Systems · Hsinchu, Taiwan</p>
           <ul>
-            <li>Executed Innovus APR flows on production designs from Apple &amp; Qualcomm across advanced process nodes as the sole optimization-engine engineer in Taiwan.</li>
+            <li>Executed Innovus APR flows on production designs from Apple & Qualcomm across advanced process nodes as the sole optimization-engine engineer in Taiwan.</li>
             <li>Analyzed PPA and runtime behavior across diverse advanced-node designs, identifying implementation bottlenecks and driving improvements in timing closure and QoR.</li>
             <li>Conducted detailed DRV analysis across floorplans, netlists, and layout data; deeply analyzed timing and power degradation caused by APR optimization algorithms.</li>
-            <li>Verified and evaluated ML-assisted P&amp;R optimization features within the GigaOpt engine, focusing on cell delay model QoR (e.g. circuit's slew / delay calculation) and PPA impact.</li>
-            <li>Slashed Innovus P&amp;R turnaround time by <strong>63%</strong> (4 hours → 1.5 hours) with zero regression by profiling the POD pipeline and fine-tuning optimization constraints.</li>
-            <li>Collaborated with R&amp;D teams to debug complex tool behavior and validate fixes for customer-reported issues on advanced N4 technologies.</li>
+            <li>Verified and evaluated ML-assisted P&R optimization features within the GigaOpt engine, focusing on cell delay model QoR (e.g. circuit's slew / delay calculation) and PPA impact.</li>
+            <li>Slashed Innovus P&R turnaround time by <strong>63%</strong> (4 hours → 1.5 hours) with zero regression by profiling the POD pipeline and fine-tuning optimization constraints.</li>
+            <li>Collaborated with R&D teams to debug complex tool behavior and validate fixes for customer-reported issues on advanced N4 technologies.</li>
           </ul>
         </div>
       </div>
@@ -995,20 +997,20 @@
                         <img src="avif/IMEC_presentation_NTHU.avif" alt="Research project presentation at Taiwan. Dr. Braeken (group director of CTT) and me." style="max-height: 180px; width: auto; object-fit: contain;" />
                       </a>
                       <a href="jpg/imec_research.jpg" target="_blank" rel="noopener">
-                        <img src="jpg/imec_research.jpg" alt="Was listening to experience sharing with Dr. João Couto and Dr. Beatrice Miccoli" style="max-height: 180px; width: auto; object-fit: contain;" />
+                        <img src="jpg/imec_research.jpg" alt="Was listeniting the experience sharing with Dr. João Couto and Dr. Beatrice Miccoli (project lead)" style="max-height: 180px; width: auto; object-fit: contain;" />
                       </a>
                     </div>
                   </div>
                 </div>
             </details>
-            <li>Co-authored a high-impact publication in <em>Frontiers in Neuroscience</em> (2019), achieving 100+ citations on Google Scholar.</li>
+            <li>Co-authored a high-impact <a href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2019.00641/full" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight: 600; text-decoration: none;"></a> publication in <em>Frontiers in Neuroscience</em> (2019), achieving 100+ citations on Google Scholar.</li>
             <details class="modern-details" style="margin-top: 12px; max-width: 100%;">
-            <summary class="modern-summary-trigger">View Project Details</summary>
+            <summary class="modern-summary-trigger">View Project Deails</summary>
             <div class="modern-details-content">
               <div class="modern-details-inner">
                 <div class="award-photos" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
                   <a href="jpg/imec_proj_slides.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/imec_proj_slides.jpg" alt="IMEC Project Overview Slides" style="max-height: 150px; width: auto; object-fit: contain;" />
+                    <img src="jpg/imec_proj_slides.jpg" alt="NTNU Official Transcript (Page 1)" style="max-height: 150px; width: auto; object-fit: contain;" />
                   </a>
                 </div>
                 <a href="pdf/imec_project_slides.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
@@ -1017,7 +1019,6 @@
                 </a>
               </div>
             </div>
-          </details>
           </ul>
         </div>
       </div>
@@ -1116,7 +1117,7 @@
                   <div class="modern-details-inner">
                     <div class="award-photos" style="margin-bottom: 12px;">
                       <a href="jpg/KUL_admission_letter.jpg" target="_blank" rel="noopener">
-                        <img src="jpg/KUL_admission_letter.jpg" alt="KU Leuven Letter of Admission &amp; Scholarship Attestation" style="max-height: 180px; width: auto; object-fit: contain;" />
+                        <img src="jpg/KUL_admission_letter.jpg" alt="KU Leuven Letter of Admission & Scholarship Attestation" style="max-height: 180px; width: auto; object-fit: contain;" />
                       </a>
                     </div>
                   </div>
@@ -1124,7 +1125,7 @@
               </details>
             </li>
             <li><strong>Rapid Software Upskilling:</strong> Leveraged a rigorous scientific environment (Faculty of Science) to master Java, and independently architected, developed, and deployed a GUI-based puzzle game for the final project (<a href="https://github.com/Shuo-Wen/Puzzle-Game" target="_blank" rel="noopener" style="color: var(--apple-blue); font-weight: 600; text-decoration: none;">source code on GitHub</a>).</li>
-            <li><strong>Global Network &amp; Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
+            <li><strong>Global Network & Adaptability:</strong> Managed demanding academic coursework and research in English under faculty supervision, while building a robust global network with researchers and peers worldwide.</li>
             <li><strong>Cross-Border Resilience:</strong> Demonstrated exceptional time management and adaptability by navigating complex logistics, traveling to over 20 cities across 10 European countries within a 6-month period.</li>
           </ul>
         </div>
@@ -1134,7 +1135,7 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header">
-            <span class="tl-role">BEng, Mechatronic Engineering &amp; Electrical Engineering</span>
+            <span class="tl-role">BEng, Mechatronic Engineering & Electrical Engineering</span>
             <span class="tl-date">Sep 2013 – Jun 2017</span>
           </div>
           <p class="tl-company">National Taiwan Normal University · Taipei, Taiwan</p>
@@ -1157,7 +1158,7 @@
                 </div>
                 <a href="pdf/NTNU_Official_Transcript.pdf" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-weight: 600; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
                   <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  Download Complete NTNU Transcript &amp; Awards (PDF)
+                  Download Complete NTNU Transcript & Awards (PDF)
                 </a>
               </div>
             </div>
@@ -1169,7 +1170,7 @@
   </section>
 
   <section id="awards">
-    <h2 class="section-title">Awards &amp; Recognition</h2>
+    <h2 class="section-title">Awards & Recognition</h2>
     <div class="awards-list">
 
       <div class="award-card">
@@ -1186,10 +1187,10 @@
                   <img src="jpg/NTU_outstanding_youth_award_medal.jpg" alt="NTU Outstanding Student Award medal" />
                 </a>
                 <a href="jpg/NTU_outstanding_youth_photo_with_ywChang_org.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTU_outstanding_youth_photo_with_ywChang_org.jpg" alt="Photo with EECS Dean Yao-Wen, Chang at the ceremony." />
+                  <img src="jpg/NTU_outstanding_youth_photo_with_ywChang_org.jpg" alt="Photo with EECS Dean Yao-Wen, Chang (IEEE Fellow & first non-European/American Chair of IEEE CEDA) at the ceremony." />
                 </a>
                 <a href="jpg/NTU_outstanding_youth_with_president.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/NTU_outstanding_youth_with_president.jpg" alt="Receiving the NTU Outstanding Student Award from the president" />
+                  <img src="jpg/NTU_outstanding_youth_with_president.jpg" alt="Receiving the NTU Outstanding Student Award from the president at the 91st University Anniversary Ceremony" />
                 </a>
                 <a href="jpg/NTU_outstanding_youth_group_photo.jpg" target="_blank" rel="noopener">
                   <img src="jpg/NTU_outstanding_youth_group_photo.jpg" alt="NTU Outstanding Student Award group photo" />
@@ -1281,10 +1282,10 @@
               <div class="award-photos" style="align-items: flex-start; gap: 16px;">
                 <div style="display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
                   <a href="jpg/preparing_demo_imagine_cup.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/preparing_demo_imagine_cup.jpg" alt="Team preparing slides and demo for final presentation" />
+                    <img src="jpg/preparing_demo_imagine_cup.jpg" alt="Team was preparating the slides and demo for final presentation" />
                   </a>
                   <a href="jpg/competition_QA_with_Ken.jpg" target="_blank" rel="noopener">
-                    <img src="jpg/competition_QA_with_Ken.jpg" alt="QA session at finals with Ken Sun, GM of Microsoft TW" />
+                    <img src="jpg/competition_QA_with_Ken.jpg" alt="QA session at finals. Was answering questions from Ken Sun, the GM of Microsoft TW" />
                   </a>
                   <a href="jpg/Imagine_cup_firstrun.jpg" target="_blank" rel="noopener">
                     <img src="jpg/Imagine_cup_firstrun.jpg" alt="Imagine Cup Taiwan — 1st round qualifying pass" style="max-height: 140px; width: auto; object-fit: contain;" />
@@ -1305,8 +1306,8 @@
 
       <div class="award-card">
         <div class="award-info">
-          <p class="award-title">2018 Future Finance &amp; Healthcare Hackathon INFOMRS Taipei</p>
-          <p class="award-meta">National · 3rd Place &amp; People's Choice Award (Top-1 voted)</p>
+          <p class="award-title">2018 Future Finance & Healthcare Hackathon INFOMRS Taipei</p>
+          <p class="award-meta">National · 3rd Place & People's Choice Award (Top-1 voted)</p>
         </div>
         <details class="modern-details">
           <summary class="modern-summary-trigger">View Award Photos</summary>
@@ -1314,16 +1315,16 @@
             <div class="modern-details-inner" style="padding: 14px 0;">
               <div class="award-photos">
                 <a href="jpg/Hackathon_future_finance_healthcare_team.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Hackathon_future_finance_healthcare_team.jpg" alt="Team photo after winning 3rd place prize" />
+                  <img src="jpg/Hackathon_future_finance_healthcare_team.jpg" alt=" Proudly representing our team at the 2018 Hackathon (Future Finance & Healthcare) after winning the 3rd place prize." />
                 </a>
                 <a href="jpg/Hackathon_future_finance_healthcare_team_ppc_pic.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Hackathon_future_finance_healthcare_team_ppc_pic.jpg" alt="Receiving People's Choice Award" />
+                  <img src="jpg/Hackathon_future_finance_healthcare_team_ppc_pic.jpg" alt=" Honored to receive the People's Choice Award for our project at the 2018 INFORMS Taipei international conference." />
                 </a>
                 <a href="jpg/Hackthon_3rd.jpg" target="_blank" rel="noopener">
-                  <img src="jpg/Hackthon_3rd.jpg" alt="Hackathon — 3rd Place certificate" />
+                  <img src="jpg/Hackthon_3rd.jpg" alt="Future Finance & Healthcare Hackathon — 3rd Place certificate" />
                 </a>
                 <a href="jpg/Hackthon_ppc_award.jpg" target="_blank" rel="noopener">
-                  <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Hackathon — People's Choice Award certificate" />
+                  <img class="no-rotate-fix" src="jpg/Hackthon_ppc_award.jpg" alt="Future Finance & Healthcare Hackathon — People's Choice Award certificate" />
                 </a>
               </div>
             </div>
@@ -1419,107 +1420,130 @@
               Data-Driven Automation for Bio-Experiment Workflows
             </a>
           </p>
-          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al. (IMEC research project)</p>
+          <p class="pub-authors"><strong>Shuo-Wen Chang</strong> et al.  (IMEC, Belgium)</p>
           <div class="pub-venue">
             <em>Frontiers in Neuroscience</em>
             <span>· 2019</span>
-            <span class="pub-cite">100+ Citations</span>
+            <span class="pub-cite">100+ citations</span>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
   <section id="international">
-    <h2 class="section-title">International &amp; Global Experience</h2>
+    <h2 class="section-title">International Experience</h2>
     <div class="intl-pills">
-      <div class="intl-pill">
-        <span class="flag">🇧🇪</span>
-        <div>
-          <strong>Belgium (Leuven)</strong><br />
-          KU Leuven Exchange Scholar &amp; IMEC Research Scholar (2018 – 2019)
-        </div>
-      </div>
-      <div class="intl-pill">
-        <span class="flag">🇸🇬</span>
-        <div>
-          <strong>Singapore</strong><br />
-          MediaTek Singapore Machine Learning Intern (2019)
-        </div>
-      </div>
-      <div class="intl-pill">
-        <span class="flag">🇮🇹</span>
-        <div>
-          <strong>Italy (Bari)</strong><br />
-          IEEE SMC 2019 Session Co-Chair &amp; Presenter
-        </div>
-      </div>
+      <div class="intl-pill"><span class="flag">🇧🇪</span><span>Research internship at IMEC, Belgium — Collaborated with European engineers and scientists</span></div>
+      <div class="intl-pill"><span class="flag">🇧🇪</span><span>Exchange student at KU Leuven — Conducted coursework and research entirely in English</span></div>
+      <div class="intl-pill"><span class="flag">🇸🇬</span><span>Engineering internship at MediaTek, Singapore</span></div>
+      <div class="intl-pill"><span class="flag">🌐</span><span>Cross-Cultural Adaptability: Skilled at collaborating across time zones, cultures, and global engineering organizations</span></div>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <p>© 2026 Kevin (Shuo-Wen) Chang. Built with Apple design principles.</p>
-  <p style="margin-top: 6px;">
-    <a href="mailto:changshuowen@gmail.com">changshuowen@gmail.com</a> · Hsinchu, Taiwan
+  <p>Kevin (Shuo-Wen) Chang  · 
+    <a href="mailto:changshuowen@gmail.com">changshuowen@gmail.com</a>
+     · 
+    <a href="https://www.linkedin.com/in/kevin-shuo-wen-chang-81b415160/" target="_blank" rel="noopener">LinkedIn</a>
   </p>
 </footer>
 
 <script>
-  // Lightbox Handler
+  // Smooth scroll with sticky-nav offset.
+  document.querySelectorAll('.sticky-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const nav = document.querySelector('.sticky-nav');
+      const navH = nav ? nav.offsetHeight : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH - 12;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = document.querySelectorAll('.sticky-nav a');
+  const backToTopBtn = document.getElementById('backToTop');
+
+  function updateScrollUI() {
+    let currentActive = sections.length ? sections[0].getAttribute('id') : '';
+    const nav = document.querySelector('.sticky-nav');
+    const navH = (nav ? nav.offsetHeight : 0) + 26;
+    const scrollPos = window.scrollY;
+
+    if (backToTopBtn) {
+      if (scrollPos > 400) backToTopBtn.classList.add('show');
+      else backToTopBtn.classList.remove('show');
+    }
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - navH;
+      if (scrollPos >= sectionTop) currentActive = section.getAttribute('id');
+    });
+
+    if (sections.length && (window.innerHeight + scrollPos) >= document.documentElement.scrollHeight - 20) {
+      currentActive = sections[sections.length - 1].getAttribute('id');
+    }
+
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === `#${currentActive}`) a.classList.add('active');
+    });
+  }
+
+  window.addEventListener('scroll', updateScrollUI, { passive: true });
+  window.addEventListener('resize', updateScrollUI);
+  window.addEventListener('load', updateScrollUI);
+  updateScrollUI();
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Glassmorphism lightbox for award and education images.
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
 
-  document.querySelectorAll('.award-photos img, .award-photos-link img').forEach(img => {
-    img.addEventListener('click', (e) => {
+  document.querySelectorAll('.award-photos a, .award-photos-link').forEach(anchor => {
+    const img = anchor.querySelector('img');
+    if (!img || !lightbox || !lightboxImg) return;
+
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      lightboxImg.src = img.src;
-      lightboxCaption.textContent = img.alt || 'View Image';
+      const imageSrc = this.getAttribute('href') || img.getAttribute('src');
+      const imageAlt = img.getAttribute('alt') || 'Image View';
+
+      lightboxImg.src = imageSrc;
+      lightboxImg.alt = imageAlt;
+      if (lightboxCaption) lightboxCaption.innerText = imageAlt;
+
       lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  lightbox.addEventListener('click', () => {
+  function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove('active');
-  });
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lightboxImg) lightboxImg.src = '';
+  }
 
-  // Back to top button
-  const backToTopBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.classList.add('show');
-    } else {
-      backToTopBtn.classList.remove('show');
-    }
-  });
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Active navigation highlight on scroll
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.sticky-nav ul li a');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 120) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
+  if (lightbox) lightbox.addEventListener('click', closeLightbox);
+  if (lightboxImg) lightboxImg.addEventListener('click', e => e.stopPropagation());
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
   });
 </script>
-
 </body>
 </html>
